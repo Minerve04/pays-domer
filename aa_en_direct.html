@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Aa en direct — Pays d'Omer</title>
+<meta name="description" content="Le niveau de l'Aa en temps réel, de Fauquembergues à Arques. Tendance sur 24 h, station par station. Par Pays d'Omer, la lettre de l'Audomarois.">
+<meta property="og:title" content="L'Aa en direct — ça monte ou ça baisse ?">
+<meta property="og:description" content="Le niveau de l'Aa en temps réel, station par station, de Fauquembergues à Arques.">
+<style>
+  :root{
+    --marine:#14263A;
+    --blanc:#FBFBF9;
+    --sarcelle:#2F6E78;
+    --gris:#5D6B72;
+    --filet:#E0E4E2;
+    --alerte:#9C4A3C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--blanc);color:var(--marine);
+    font-family:"Liberation Sans",Helvetica,Arial,sans-serif;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 64px}
+  header{text-align:center;padding-bottom:22px}
+  .logotype{font-family:"Liberation Serif",Georgia,"Times New Roman",serif;font-size:30px;font-weight:700;letter-spacing:.5px}
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase}
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  .kicker{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:6px}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-size:34px;line-height:1.2;text-align:center;margin:8px 0 6px}
+  .maj{text-align:center;color:var(--gris);font-size:13px;margin-bottom:26px}
+  /* Bandeau tendance globale */
+  .tendance{
+    text-align:center;padding:26px 20px;border:1px solid var(--filet);margin-bottom:34px;
+  }
+  .tendance .verdict{font-family:"Liberation Serif",Georgia,serif;font-size:30px;line-height:1.15}
+  .tendance .detail{color:var(--gris);font-size:14.5px;margin-top:8px}
+  .tendance.monte{border-color:var(--alerte)}
+  .tendance.monte .verdict{color:var(--alerte)}
+  .tendance.baisse .verdict{color:var(--sarcelle)}
+  /* Stations */
+  .section-titre{
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);
+    font-weight:700;margin-bottom:4px;
+  }
+  .section-sub{color:var(--gris);font-size:13.5px;margin-bottom:18px}
+  .station{
+    display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;
+    padding:16px 0;border-bottom:1px solid var(--filet);
+  }
+  .station:last-of-type{border-bottom:none}
+  .st-nom{font-family:"Liberation Serif",Georgia,serif;font-size:19px;font-weight:700}
+  .st-lieu{font-size:12px;color:var(--gris);letter-spacing:1px;text-transform:uppercase}
+  .st-mesure{text-align:right}
+  .st-h{font-family:"Liberation Serif",Georgia,serif;font-size:26px;font-weight:700;white-space:nowrap}
+  .st-delta{font-size:13px;white-space:nowrap}
+  .st-delta.up{color:var(--alerte);font-weight:700}
+  .st-delta.down{color:var(--sarcelle);font-weight:700}
+  .st-delta.flat{color:var(--gris)}
+  .st-spark{grid-column:1 / -1}
+  .st-spark svg{display:block;width:100%;height:44px}
+  .st-vide{grid-column:1 / -1;color:var(--gris);font-size:13.5px;font-style:italic}
+  .chargement{text-align:center;color:var(--gris);padding:40px 0;font-size:15px}
+  /* Note */
+  .note{
+    margin-top:34px;padding:16px 18px;border-left:2px solid var(--sarcelle);
+    background:rgba(47,110,120,.05);font-size:13.5px;color:var(--gris);
+  }
+  .note a{color:var(--sarcelle);font-weight:700}
+  footer{margin-top:44px;text-align:center}
+  @media(max-width:480px){
+    h1{font-size:28px}
+    .tendance .verdict{font-size:24px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logotype">Pays d&rsquo;Omer</div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+  </header>
+  <div class="filet-eau"></div>
+
+  <div class="kicker">Vigie de l&rsquo;eau</div>
+  <h1>L&rsquo;Aa en direct</h1>
+  <p class="maj" id="maj">Chargement des mesures…</p>
+
+  <div class="tendance" id="tendance" style="display:none">
+    <div class="verdict" id="verdict"></div>
+    <div class="detail" id="verdict-detail"></div>
+  </div>
+
+  <div class="section-titre">Le chemin de l&rsquo;eau</div>
+  <p class="section-sub">Quatre stations, de l&rsquo;amont vers le marais. Ce qui monte à Fauquembergues arrive à Saint-Omer quelques heures plus tard.</p>
+
+  <div id="stations"><div class="chargement">Interrogation des stations hydrométriques…</div></div>
+
+  <div class="note">
+    Mesures brutes temps réel du réseau public Hub&rsquo;Eau / Vigicrues, rafraîchies automatiquement.
+    Cette page est un service d&rsquo;information de Pays d&rsquo;Omer, pas un dispositif d&rsquo;alerte officiel :
+    en période de crue, référez-vous à <a href="https://www.vigicrues.gouv.fr" target="_blank" rel="noopener">vigicrues.gouv.fr</a>
+    et aux consignes de votre mairie.
+  </div>
+
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+  </footer>
+</div>
+
+<script>
+/* Stations de l'Aa, de l'amont vers l'aval (référentiel Hub'Eau / HydroPortail) */
+const STATIONS = [
+  {code:"E403572001", nom:"Fauquembergues", role:"Amont — la sentinelle"},
+  {code:"E403653301", nom:"Elnes",          role:"Moyenne vallée"},
+  {code:"E403571003", nom:"Wizernes",       role:"Aux portes de Saint-Omer", principal:true},
+  {code:"E403000101", nom:"Arques",         role:"Canal — entrée du marais"}
+];
+const API = "https://hubeau.eaufrance.fr/api/v2/hydrometrie/observations_tr";
+const H48 = 48*3600*1000;
+
+function fmtM(mm){ return (mm/1000).toFixed(2).replace(".",",") + " m"; }
+function fmtDelta(mm){
+  const cm = Math.round(mm/10);
+  const s = (cm>0?"+":"") + cm;
+  return s + " cm / 24 h";
+}
+function heure(d){
+  return d.toLocaleString("fr-FR",{day:"numeric",month:"long",hour:"2-digit",minute:"2-digit"});
+}
+
+async function fetchStation(code){
+  const debut = new Date(Date.now()-H48).toISOString();
+  const url = API + "?code_entite=" + code +
+    "&grandeur_hydro=H&date_debut_obs=" + encodeURIComponent(debut) +
+    "&size=2000&sort=asc&fields=date_obs,resultat_obs";
+  const r = await fetch(url);
+  if(!r.ok) throw new Error("HTTP "+r.status);
+  const j = await r.json();
+  return (j.data||[])
+    .filter(o=>o.resultat_obs!=null)
+    .map(o=>({t:new Date(o.date_obs).getTime(), v:o.resultat_obs}))
+    .sort((a,b)=>a.t-b.t);
+}
+
+function nearest(obs, targetT){
+  let best=null, bd=Infinity;
+  for(const o of obs){ const d=Math.abs(o.t-targetT); if(d<bd){bd=d;best=o;} }
+  return best;
+}
+
+function spark(obs){
+  if(obs.length<2) return "";
+  const w=600,h=44,p=3;
+  const vs=obs.map(o=>o.v), t0=obs[0].t, t1=obs[obs.length-1].t;
+  let vmin=Math.min(...vs), vmax=Math.max(...vs);
+  if(vmax-vmin<20){ const m=(vmax+vmin)/2; vmin=m-10; vmax=m+10; } /* aplatir le bruit */
+  const X=t=>p+(t-t0)/(t1-t0||1)*(w-2*p);
+  const Y=v=>h-p-(v-vmin)/(vmax-vmin||1)*(h-2*p);
+  const d=obs.map((o,i)=>(i?"L":"M")+X(o.t).toFixed(1)+" "+Y(o.v).toFixed(1)).join(" ");
+  return '<svg viewBox="0 0 '+w+' '+h+'" preserveAspectRatio="none">'+
+    '<path d="'+d+'" fill="none" stroke="#2F6E78" stroke-width="1.6"/>'+
+    '<path d="'+d+' L'+X(t1).toFixed(1)+' '+h+' L'+X(t0).toFixed(1)+' '+h+' Z" fill="rgba(47,110,120,.07)" stroke="none"/></svg>';
+}
+
+function rowHTML(st, obs){
+  let inner;
+  if(!obs || obs.length===0){
+    inner = '<div><div class="st-nom">'+st.nom+'</div><div class="st-lieu">'+st.role+'</div></div>'+
+      '<div class="st-mesure"></div><div class="st-vide">Pas de mesure transmise ces dernières 48 h.</div>';
+  } else {
+    const last = obs[obs.length-1];
+    const ref = nearest(obs, last.t-24*3600*1000);
+    const delta = ref ? last.v-ref.v : 0;
+    const cls = Math.abs(delta)<30 ? "flat" : (delta>0?"up":"down");
+    const arrow = cls==="flat" ? "→" : (delta>0?"↗":"↘");
+    inner = '<div><div class="st-nom">'+st.nom+'</div><div class="st-lieu">'+st.role+'</div></div>'+
+      '<div class="st-mesure"><div class="st-h">'+fmtM(last.v)+'</div>'+
+      '<div class="st-delta '+cls+'">'+arrow+' '+fmtDelta(delta)+'</div></div>'+
+      '<div class="st-spark">'+spark(obs)+'</div>';
+  }
+  return '<div class="station">'+inner+'</div>';
+}
+
+function verdictGlobal(results){
+  /* Basé sur la station principale (Wizernes), sinon la plus aval disponible */
+  let main=null;
+  for(const r of results){ if(r.st.principal && r.obs && r.obs.length) main=r; }
+  if(!main) for(const r of results){ if(r.obs && r.obs.length) main=r; }
+  if(!main) return null;
+  const obs=main.obs, last=obs[obs.length-1];
+  const ref=nearest(obs,last.t-24*3600*1000);
+  const delta=ref?last.v-ref.v:0, cm=Math.round(delta/10);
+  let cls,txt;
+  if(cm>=5){ cls="monte"; txt="L’Aa monte."; }
+  else if(cm<=-5){ cls="baisse"; txt="L’Aa baisse."; }
+  else { cls="stable"; txt="L’Aa est stable."; }
+  const det="À "+main.st.nom+" : "+fmtM(last.v)+" ("+(cm>0?"+":"")+cm+" cm sur 24 h). Dernière mesure : "+heure(new Date(last.t))+".";
+  return {cls,txt,det};
+}
+
+async function charger(){
+  const results = await Promise.all(STATIONS.map(async st=>{
+    try{ return {st, obs: await fetchStation(st.code)}; }
+    catch(e){ return {st, obs:null}; }
+  }));
+  document.getElementById("stations").innerHTML = results.map(r=>rowHTML(r.st,r.obs)).join("");
+  const v = verdictGlobal(results);
+  if(v){
+    const t=document.getElementById("tendance");
+    t.style.display="block"; t.className="tendance "+v.cls;
+    document.getElementById("verdict").textContent=v.txt;
+    document.getElementById("verdict-detail").textContent=v.det;
+  }
+  document.getElementById("maj").textContent =
+    "Actualisé le " + heure(new Date()) + " — rafraîchissement automatique toutes les 15 minutes.";
+}
+
+charger();
+setInterval(charger, 15*60*1000);
+</script>
+</body>
+</html>

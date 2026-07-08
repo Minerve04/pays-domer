@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connais-tu vraiment l'Audomarois ? — Pays d'Omer</title>
+<meta name="description" content="10 questions pour prouver que tu es un vrai Audomarois. Quiz gratuit par Pays d'Omer, la lettre de l'Audomarois.">
+<meta property="og:title" content="Connais-tu vraiment l'Audomarois ?">
+<meta property="og:description" content="10 questions, un titre à décrocher. Es-tu un Audomarois pur bacôve ?">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --marine:#14263A;
+    --blanc:#FBFBF9;
+    --sarcelle:#2F6E78;
+    --gris:#5D6B72;
+    --filet:#E0E4E2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--blanc);
+    color:var(--marine);
+    font-family:"Liberation Sans",Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:32px 20px 64px}
+  /* ——— En-tête logotypé ——— */
+  header{text-align:center;padding-bottom:22px}
+  .logotype{
+    font-family:"Liberation Serif",Georgia,"Times New Roman",serif;
+    font-size:30px;font-weight:700;letter-spacing:.5px;
+  }
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{
+    font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase;
+  }
+  /* ——— Filet d'eau (séparateur signature) ——— */
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  /* ——— Écrans ——— */
+  .screen{display:none}
+  .screen.active{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  h1{
+    font-family:"Liberation Serif",Georgia,serif;
+    font-size:34px;line-height:1.2;text-align:center;margin:8px 0 14px;
+  }
+  .kicker{
+    text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--sarcelle);font-weight:700;margin-bottom:6px;
+  }
+  .intro-text{color:var(--gris);text-align:center;font-size:16.5px;max-width:480px;margin:0 auto 28px}
+  .btn{
+    display:block;width:100%;max-width:340px;margin:0 auto;
+    background:var(--marine);color:var(--blanc);border:none;cursor:pointer;
+    font-family:"Liberation Sans",Helvetica,Arial,sans-serif;
+    font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+    padding:16px 24px;transition:background .2s;
+  }
+  .btn:hover{background:var(--sarcelle)}
+  .btn.secondary{background:transparent;color:var(--marine);border:1px solid var(--marine)}
+  .btn.secondary:hover{color:var(--sarcelle);border-color:var(--sarcelle);background:transparent}
+  /* ——— Progression ——— */
+  .progress-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+  .progress-label{font-size:11px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sarcelle);font-weight:700}
+  .progress-score{font-size:12px;color:var(--gris)}
+  .progress-bar{height:3px;background:var(--filet);margin-bottom:30px}
+  .progress-fill{height:100%;width:0;background:var(--sarcelle);transition:width .3s ease}
+  /* ——— Question ——— */
+  .question{
+    font-family:"Liberation Serif",Georgia,serif;
+    font-size:23px;line-height:1.35;margin-bottom:24px;
+  }
+  .answers{display:flex;flex-direction:column;gap:10px}
+  .answer{
+    text-align:left;background:transparent;border:1px solid var(--filet);
+    padding:14px 16px;font-size:16px;color:var(--marine);cursor:pointer;
+    font-family:inherit;transition:border-color .15s,background .15s;
+  }
+  .answer:hover{border-color:var(--sarcelle)}
+  .answer.correct{border-color:var(--sarcelle);background:rgba(47,110,120,.08);font-weight:700}
+  .answer.wrong{border-color:#9c4a3c;background:rgba(156,74,60,.06);color:var(--gris)}
+  .answer:disabled{cursor:default}
+  .explain{
+    display:none;margin-top:20px;padding:16px 18px;
+    border-left:2px solid var(--sarcelle);background:rgba(47,110,120,.05);
+    font-size:15px;color:var(--gris);
+  }
+  .explain strong{color:var(--marine)}
+  .next-row{margin-top:24px;display:none}
+  /* ——— Résultat ——— */
+  .score-big{
+    font-family:"Liberation Serif",Georgia,serif;
+    font-size:72px;text-align:center;line-height:1;margin:18px 0 4px;
+  }
+  .score-sur{text-align:center;color:var(--gris);font-size:15px;margin-bottom:22px}
+  .titre-badge{
+    text-align:center;font-family:"Liberation Serif",Georgia,serif;
+    font-size:27px;margin-bottom:8px;
+  }
+  .titre-sub{text-align:center;color:var(--gris);font-size:15.5px;max-width:440px;margin:0 auto 30px}
+  .share-box{max-width:400px;margin:0 auto}
+  .share-box .btn{margin-bottom:10px}
+  .copied{
+    text-align:center;font-size:12.5px;color:var(--sarcelle);height:18px;
+    letter-spacing:1px;text-transform:uppercase;font-weight:700;
+  }
+  footer{margin-top:44px;text-align:center}
+  footer .signature{margin-top:8px}
+  .repere{
+    display:flex;justify-content:center;gap:28px;margin:26px 0 30px;
+    text-align:center;flex-wrap:wrap;
+  }
+  .repere div span{
+    display:block;font-family:"Liberation Serif",Georgia,serif;
+    font-size:26px;font-weight:700;
+  }
+  .repere div small{font-size:10.5px;letter-spacing:2px;text-transform:uppercase;color:var(--gris)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="logotype">Pays d&rsquo;Omer</div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+  </header>
+  <div class="filet-eau"></div>
+
+  <!-- ÉCRAN ACCUEIL -->
+  <section class="screen active" id="screen-intro">
+    <div class="kicker">Le grand quiz</div>
+    <h1>Connais-tu vraiment<br>l&rsquo;Audomarois&nbsp;?</h1>
+    <p class="intro-text">Dix questions sur le marais, l&rsquo;eau, l&rsquo;histoire et les communes.
+    À la clé&nbsp;: ton titre officiel d&rsquo;Audomarois — à partager (ou pas).</p>
+    <div class="repere">
+      <div><span>10</span><small>Questions</small></div>
+      <div><span>2</span><small>Minutes</small></div>
+      <div><span>4</span><small>Titres à décrocher</small></div>
+    </div>
+    <button class="btn" onclick="start()">Commencer</button>
+  </section>
+
+  <!-- ÉCRAN QUIZ -->
+  <section class="screen" id="screen-quiz">
+    <div class="progress-row">
+      <span class="progress-label" id="q-count">Question 1 / 10</span>
+      <span class="progress-score" id="q-score">Score : 0</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="q-fill"></div></div>
+    <div class="question" id="q-text"></div>
+    <div class="answers" id="q-answers"></div>
+    <div class="explain" id="q-explain"></div>
+    <div class="next-row" id="q-next-row">
+      <button class="btn" onclick="next()" id="q-next-btn">Question suivante</button>
+    </div>
+  </section>
+
+  <!-- ÉCRAN RÉSULTAT -->
+  <section class="screen" id="screen-result">
+    <div class="kicker">Ton résultat</div>
+    <div class="score-big" id="r-score">0</div>
+    <div class="score-sur">sur 10</div>
+    <div class="filet-eau"></div>
+    <div class="titre-badge" id="r-titre"></div>
+    <p class="titre-sub" id="r-sub"></p>
+    <div class="share-box">
+      <button class="btn" onclick="shareResult()">Partager mon titre</button>
+      <button class="btn secondary" onclick="restart()">Rejouer</button>
+      <p class="copied" id="r-copied"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+  </footer>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    q:"Le marais audomarois est reconnu par l'UNESCO comme réserve de biosphère. Depuis quelle année ?",
+    a:["1998","2005","2013","2021"], c:2,
+    e:"<strong>2013.</strong> Le marais audomarois a rejoint le réseau mondial des réserves de biosphère de l'UNESCO (programme « Man and Biosphere »), une reconnaissance de l'équilibre unique entre l'homme et la nature."
+  },
+  {
+    q:"Comment s'appelle la grande barque à fond plat traditionnelle du marais ?",
+    a:["L'escute","Le bacôve","Le flobart","La bèche"], c:1,
+    e:"<strong>Le bacôve</strong> servait à transporter les récoltes et le bétail. L'escute est sa petite sœur, plus fine. Le flobart, lui, est le bateau de la Côte d'Opale."
+  },
+  {
+    q:"Quel légume est l'emblème du marais audomarois ?",
+    a:["L'endive","Le poireau","Le chou-fleur","La carotte"], c:2,
+    e:"<strong>Le chou-fleur</strong>, roi du marais. Le maraîchage y couvre encore plusieurs centaines d'hectares — c'est le dernier marais maraîcher de France encore cultivé."
+  },
+  {
+    q:"Quel fleuve côtier traverse l'Audomarois avant de rejoindre la mer à Gravelines ?",
+    a:["La Lys","La Canche","La Hem","L'Aa"], c:3,
+    e:"<strong>L'Aa</strong>, premier fleuve de France dans l'ordre alphabétique. Il alimente le marais et file vers la mer du Nord."
+  },
+  {
+    q:"L'ascenseur à bateaux des Fontinettes (1888), prouesse technique de son époque, se trouve à…",
+    a:["Blendecques","Arques","Wizernes","Éperlecques"], c:1,
+    e:"<strong>Arques.</strong> Cet ascenseur hydraulique permettait aux péniches de franchir plus de 13 mètres de dénivelé sur le canal de Neufossé, en remplacement de cinq écluses."
+  },
+  {
+    q:"La Coupole, l'immense dôme de béton d'Helfaut-Wizernes, a été construite pendant la guerre pour…",
+    a:["Abriter la population","Stocker des munitions","Lancer des fusées V2","Servir d'hôpital souterrain"], c:2,
+    e:"<strong>Lancer des fusées V2</strong> vers Londres. Jamais opérationnelle, elle est aujourd'hui un centre d'histoire et un planétarium."
+  },
+  {
+    q:"Saint-Omer doit son nom à Audomar. Qui était-il ?",
+    a:["Un comte de Flandre","Un moine du VIIe siècle","Un général romain","Un roi mérovingien"], c:1,
+    e:"<strong>Un moine du VIIe siècle</strong>, devenu évêque de Thérouanne. C'est lui qui évangélisa la région — et lui laissa son nom, ainsi qu'à tout l'Audomarois."
+  },
+  {
+    q:"Comment appelle-t-on les petits canaux qui quadrillent le marais ?",
+    a:["Les wateringues","Les becques","Les watergangs","Les fossés-mères"], c:2,
+    e:"<strong>Les watergangs.</strong> Piège classique : les wateringues désignent le système (et l'institution) de drainage des terres basses, pas les canaux du marais eux-mêmes."
+  },
+  {
+    q:"Combien d'espèces d'oiseaux ont été recensées dans le marais audomarois ?",
+    a:["Une cinquantaine","Environ 100","Plus de 200","Plus de 500"], c:2,
+    e:"<strong>Plus de 200 espèces d'oiseaux</strong> — et au total plus de 5 000 espèces animales et végétales recensées dans le marais. Un réservoir de biodiversité exceptionnel."
+  },
+  {
+    q:"La cathédrale Notre-Dame de Saint-Omer abrite une toile d'un grand maître flamand. Lequel ?",
+    a:["Van Eyck","Rembrandt","Bruegel","Rubens"], c:3,
+    e:"<strong>Rubens</strong> — sa « Descente de croix » est l'un des trésors de la cathédrale, avec le buffet d'orgue et l'horloge astronomique."
+  }
+];
+
+const TITRES = [
+  {min:0, t:"De passage sur la Grand'Place", s:"Tu découvres l'Audomarois — et c'est très bien : les plus belles histoires commencent par une première visite. La lettre de Pays d'Omer est là pour ça."},
+  {min:4, t:"Promeneur du dimanche", s:"Tu connais les grands classiques, mais le marais garde encore quelques secrets pour toi. Encore un ou deux tours de bacôve et tu y es."},
+  {min:7, t:"Habitué des watergangs", s:"Solide. Tu navigues entre les watergangs sans te perdre et tu sais qui était Audomar. Le titre suprême est à portée de perche."},
+  {min:9, t:"Audomarois pur bacôve", s:"Chapeau bas. Tu es de ceux qui pourraient faire visiter le marais les yeux fermés. L'Audomarois coule dans tes veines — probablement via l'Aa."}
+];
+
+let idx = 0, score = 0;
+
+function show(id){
+  document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function start(){ idx = 0; score = 0; show("screen-quiz"); render(); }
+function restart(){ start(); }
+
+function render(){
+  const q = QUESTIONS[idx];
+  document.getElementById("q-count").textContent = "Question " + (idx+1) + " / " + QUESTIONS.length;
+  document.getElementById("q-score").textContent = "Score : " + score;
+  document.getElementById("q-fill").style.width = (idx / QUESTIONS.length * 100) + "%";
+  document.getElementById("q-text").textContent = q.q;
+  const box = document.getElementById("q-answers");
+  box.innerHTML = "";
+  q.a.forEach((label,i)=>{
+    const b = document.createElement("button");
+    b.className = "answer";
+    b.textContent = label;
+    b.onclick = ()=>answer(i,b);
+    box.appendChild(b);
+  });
+  document.getElementById("q-explain").style.display = "none";
+  document.getElementById("q-next-row").style.display = "none";
+}
+
+function answer(i, btn){
+  const q = QUESTIONS[idx];
+  const buttons = document.querySelectorAll("#q-answers .answer");
+  buttons.forEach(b=>b.disabled = true);
+  buttons[q.c].classList.add("correct");
+  if(i === q.c){ score++; } else { btn.classList.add("wrong"); }
+  document.getElementById("q-score").textContent = "Score : " + score;
+  const ex = document.getElementById("q-explain");
+  ex.innerHTML = q.e;
+  ex.style.display = "block";
+  document.getElementById("q-next-btn").textContent = (idx === QUESTIONS.length-1) ? "Voir mon titre" : "Question suivante";
+  document.getElementById("q-next-row").style.display = "block";
+}
+
+function next(){
+  idx++;
+  if(idx >= QUESTIONS.length){ result(); } else { render(); }
+}
+
+function titreFor(s){
+  let t = TITRES[0];
+  TITRES.forEach(x=>{ if(s >= x.min) t = x; });
+  return t;
+}
+
+function result(){
+  document.getElementById("q-fill").style.width = "100%";
+  const t = titreFor(score);
+  document.getElementById("r-score").textContent = score;
+  document.getElementById("r-titre").textContent = "« " + t.t + " »";
+  document.getElementById("r-sub").textContent = t.s;
+  show("screen-result");
+}
+
+function shareResult(){
+  const t = titreFor(score);
+  const url = window.location.href.split("#")[0];
+  const text = "J'ai obtenu " + score + "/10 au grand quiz de l'Audomarois : je suis « " + t.t + " » ! Et toi, tu connais vraiment l'Audomarois ? " + url;
+  if(navigator.share){
+    navigator.share({title:"Connais-tu vraiment l'Audomarois ?", text:text, url:url}).catch(()=>{});
+  } else if(navigator.clipboard){
+    navigator.clipboard.writeText(text).then(()=>{
+      const c = document.getElementById("r-copied");
+      c.textContent = "Texte copié — colle-le où tu veux !";
+      setTimeout(()=>{ c.textContent = ""; }, 3500);
+    });
+  }
+}
+</script>
+</body>
+</html>
