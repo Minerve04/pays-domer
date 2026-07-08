@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Agenda de l'Audomarois — Pays d'Omer</title>
+<meta name="description" content="Tous les événements du Pays de Saint-Omer au même endroit : ce soir, ce week-end, ce mois. Concerts, brocantes, visites, ateliers — mis à jour deux fois par jour.">
+<meta property="og:title" content="L'Agenda de l'Audomarois">
+<meta property="og:description" content="Que faire ce soir, ce week-end, ce mois dans l'Audomarois ? Tout l'agenda de l'agglo au même endroit.">
+<style>
+  :root{
+    --marine:#14263A; --blanc:#FBFBF9; --sarcelle:#2F6E78;
+    --gris:#5D6B72; --filet:#E0E4E2;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--blanc);color:var(--marine);font-family:"Liberation Sans",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 64px}
+  header{text-align:center;padding-bottom:22px}
+  .logotype{font-family:"Liberation Serif",Georgia,"Times New Roman",serif;font-size:30px;font-weight:700;letter-spacing:.5px}
+  .logotype a{color:inherit;text-decoration:none}
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase}
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  .kicker{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:6px}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-size:34px;line-height:1.2;text-align:center;margin:8px 0 6px}
+  .maj{text-align:center;color:var(--gris);font-size:13px;margin-bottom:24px}
+  /* Onglets périodes */
+  .tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .tab{
+    border:1px solid var(--filet);background:transparent;color:var(--marine);
+    padding:9px 16px;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+    cursor:pointer;font-family:inherit;
+  }
+  .tab.active{background:var(--marine);color:var(--blanc);border-color:var(--marine)}
+  .tab:hover:not(.active){border-color:var(--sarcelle)}
+  /* Filtre commune */
+  .filtre{display:flex;justify-content:center;margin-bottom:28px}
+  .filtre select{
+    border:1px solid var(--filet);background:transparent;color:var(--marine);
+    padding:9px 14px;font-size:14px;font-family:inherit;outline:none;max-width:100%;
+  }
+  .filtre select:focus{border-color:var(--sarcelle)}
+  /* Liste */
+  .jour{margin-bottom:8px}
+  .jour-titre{
+    font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);
+    font-weight:700;margin:26px 0 4px;padding-bottom:6px;border-bottom:1px solid var(--filet);
+  }
+  .evt{display:grid;grid-template-columns:1fr auto;gap:2px 14px;padding:13px 0;border-bottom:1px solid var(--filet);align-items:baseline}
+  .evt:last-child{border-bottom:none}
+  .evt-titre{font-family:"Liberation Serif",Georgia,serif;font-size:17.5px;font-weight:700;line-height:1.3}
+  .evt-titre a{color:inherit;text-decoration:none}
+  .evt-titre a:hover{color:var(--sarcelle)}
+  .evt-meta{font-size:13px;color:var(--gris)}
+  .evt-cat{
+    font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--sarcelle);
+    font-weight:700;white-space:nowrap;
+  }
+  .vide,.chargement{text-align:center;color:var(--gris);padding:40px 0;font-size:15px;font-style:italic}
+  .note{margin-top:34px;padding:14px 18px;border-left:2px solid var(--sarcelle);background:rgba(47,110,120,.05);font-size:13px;color:var(--gris)}
+  .note a{color:var(--sarcelle);font-weight:700}
+  /* Newsletter */
+  .nl-box{margin:38px auto 0;max-width:440px;padding:22px 22px 18px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle)}
+  .nl-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px;text-align:center}
+  .nl-text{font-size:14.5px;color:var(--gris);text-align:center;margin-bottom:16px}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-form input{border:1px solid var(--filet);padding:13px 14px;font-size:15px;font-family:inherit;color:var(--marine);background:transparent;outline:none}
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-form button{
+    background:var(--marine);color:var(--blanc);border:none;cursor:pointer;font-family:inherit;
+    font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px;
+  }
+  .nl-form button:hover{background:var(--sarcelle)}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
+  .nl-merci{text-align:center;font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
+  footer{margin-top:44px;text-align:center}
+  @media(max-width:480px){h1{font-size:28px}.evt{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logotype"><a href="/">Pays d&rsquo;Omer</a></div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+  </header>
+  <div class="filet-eau"></div>
+
+  <div class="kicker">Que faire dans l&rsquo;agglo</div>
+  <h1>L&rsquo;Agenda de l&rsquo;Audomarois</h1>
+  <p class="maj" id="maj">Chargement de l&rsquo;agenda…</p>
+
+  <div class="tabs">
+    <button class="tab active" data-p="jour" onclick="setPeriode('jour',this)">Aujourd&rsquo;hui</button>
+    <button class="tab" data-p="we" onclick="setPeriode('we',this)">Ce week-end</button>
+    <button class="tab" data-p="semaine" onclick="setPeriode('semaine',this)">7 jours</button>
+    <button class="tab" data-p="mois" onclick="setPeriode('mois',this)">Ce mois</button>
+  </div>
+  <div class="filtre">
+    <select id="commune" onchange="renderList()">
+      <option value="">Toutes les communes</option>
+    </select>
+  </div>
+
+  <div id="liste"><div class="chargement">Interrogation de l&rsquo;agenda…</div></div>
+
+  <div class="note">
+    Agenda agrégé automatiquement deux fois par jour, principalement depuis
+    <a href="https://www.tourisme-saintomer.com/sortir/agenda/" target="_blank" rel="noopener">l&rsquo;agenda de l&rsquo;Office de Tourisme du Pays de Saint-Omer</a>.
+    Vérifiez horaires et réservations sur la page de chaque événement. Vous organisez un événement ?
+    <a href="https://www.tourisme-saintomer.com/espace-pro/ajoutez-votre-animation-a-l-agenda-en-ligne/" target="_blank" rel="noopener">Ajoutez-le à l&rsquo;agenda de l&rsquo;OT</a>, il apparaîtra ici.
+  </div>
+
+  <div class="nl-box" id="nl-box">
+    <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+    <p class="nl-text">Chaque semaine, la sélection des sorties et les histoires de fond de l&rsquo;Audomarois, chez toi.</p>
+    <form class="nl-form" onsubmit="submitEmail(event)">
+      <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+      <button type="submit" id="nl-btn">Recevoir la lettre</button>
+    </form>
+    <p class="nl-rgpd">Jamais partagée, désinscription à tout moment.</p>
+  </div>
+  <p class="nl-merci" id="nl-merci">Bien reçu — à très vite dans ta boîte mail.</p>
+
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+  </footer>
+</div>
+
+<script>
+const SHEET_ID = "1RcKWS5JGtvCP38wNi04vKKWwj0d_wz7N99AUcVR3iaM";
+const GVIZ = "https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:json&headers=1";
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+
+let EVENTS = [];
+let periode = "jour";
+
+function iso(d){ return d.toISOString().slice(0,10); }
+function today(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
+
+function bornes(p){
+  const t = today();
+  if(p==="jour") return [iso(t), iso(t)];
+  if(p==="semaine"){ const f=new Date(t); f.setDate(f.getDate()+6); return [iso(t), iso(f)]; }
+  if(p==="mois"){ const f=new Date(t); f.setDate(f.getDate()+30); return [iso(t), iso(f)]; }
+  /* week-end : vendredi soir → dimanche */
+  const d=new Date(t); const dow=d.getDay(); /* 0=dim */
+  const ven=new Date(d); ven.setDate(d.getDate() + ((5 - dow + 7) % 7)); /* prochain vendredi (ou aujourd'hui si ven) */
+  if(dow===6||dow===0){ ven.setDate(d.getDate()); } /* si on est déjà le week-end */
+  const dim=new Date(ven); dim.setDate(ven.getDate() + (dow===0?0:(7-((ven.getDay()||7)))));
+  const dim2=new Date(ven); dim2.setDate(ven.getDate()+2 - (ven.getDay()===6?1:0) - (ven.getDay()===0?2:0));
+  return [iso(dow===0?d:ven), iso(dim2)];
+}
+
+function parseGviz(text){
+  const j = JSON.parse(text.substring(text.indexOf("{"), text.lastIndexOf("}")+1));
+  const rows = (j.table.rows||[]);
+  return rows.map(r=>{
+    const c = r.c.map(x=>x&&x.v!=null?String(x.v):"");
+    return {d1:norm(c[0]), d2:norm(c[1]||c[0]), t:c[2], c:c[3], l:c[4], h:c[5], k:c[6], u:c[7]};
+  }).filter(e=>e.d1 && e.t);
+}
+function norm(v){
+  /* gviz renvoie parfois Date(2026,6,8) */
+  const m = /^Date\((\d+),(\d+),(\d+)/.exec(v);
+  if(m) return m[1]+"-"+String(+m[2]+1).padStart(2,"0")+"-"+String(+m[3]).padStart(2,"0");
+  return v.slice(0,10);
+}
+
+function joliDate(s){
+  const d = new Date(s+"T12:00:00");
+  return d.toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+}
+
+function setPeriode(p, btn){
+  periode = p;
+  document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+  btn.classList.add("active");
+  renderList();
+}
+
+function renderList(){
+  const [a,b] = bornes(periode);
+  const commune = document.getElementById("commune").value;
+  const sel = EVENTS.filter(e => e.d1 <= b && e.d2 >= a && (!commune || e.c === commune));
+  const box = document.getElementById("liste");
+  if(sel.length===0){
+    box.innerHTML = '<p class="vide">Rien de recensé sur cette période'+(commune?' à '+commune:'')+' — pour l&rsquo;instant. L&rsquo;agenda s&rsquo;enrichit deux fois par jour.</p>';
+    return;
+  }
+  /* groupé par jour de début (ou "en cours") */
+  const grp = {};
+  sel.forEach(e=>{
+    const key = e.d1 < a ? "En cours" : joliDate(e.d1);
+    (grp[key] = grp[key] || []).push(e);
+  });
+  let html = "";
+  Object.keys(grp).forEach(k=>{
+    html += '<div class="jour"><div class="jour-titre">'+k+'</div>';
+    grp[k].forEach(e=>{
+      const meta = [e.c, e.l, e.h].filter(Boolean).join(" · ");
+      const titre = e.u ? '<a href="'+e.u+'" target="_blank" rel="noopener">'+e.t+'</a>' : e.t;
+      html += '<div class="evt"><div><div class="evt-titre">'+titre+'</div>'+
+        '<div class="evt-meta">'+meta+(e.d2>e.d1?' · jusqu&rsquo;au '+joliDate(e.d2):'')+'</div></div>'+
+        '<div class="evt-cat">'+(e.k||"")+'</div></div>';
+    });
+    html += '</div>';
+  });
+  box.innerHTML = html;
+}
+
+function fillCommunes(){
+  const communes = [...new Set(EVENTS.map(e=>e.c).filter(Boolean))].sort();
+  const sel = document.getElementById("commune");
+  communes.forEach(c=>{
+    const o = document.createElement("option"); o.value=c; o.textContent=c; sel.appendChild(o);
+  });
+}
+
+async function charger(){
+  try{
+    const r = await fetch(GVIZ);
+    const text = await r.text();
+    EVENTS = parseGviz(text);
+    document.getElementById("maj").textContent =
+      EVENTS.length + " événements recensés — agenda actualisé matin et soir.";
+    fillCommunes();
+    renderList();
+  }catch(e){
+    document.getElementById("liste").innerHTML =
+      '<p class="vide">L&rsquo;agenda est momentanément indisponible. Réessayez dans un instant.</p>';
+    document.getElementById("maj").textContent = "";
+  }
+}
+
+function submitEmail(ev){
+  ev.preventDefault();
+  const email = document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn = document.getElementById("nl-btn");
+  btn.disabled = true; btn.textContent = "Envoi…";
+  const body = new URLSearchParams({email:email, score:"", titre:"", source:"agenda"});
+  fetch(WEBHOOK,{method:"POST",body:body,mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display="none";
+    document.getElementById("nl-merci").style.display="block";
+  });
+}
+
+charger();
+</script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gardes & services — Pays d'Omer</title>
+<meta name="description" content="Pharmacie de garde, médecin de garde, marchés du jour, déchets : les services utiles de l'Audomarois au même endroit.">
+<meta property="og:title" content="Gardes & services de l'Audomarois">
+<meta property="og:description" content="Pharmacie de garde, marchés du jour, collecte des déchets : l'essentiel utile de l'agglo.">
+<style>
+  :root{--marine:#14263A;--blanc:#FBFBF9;--sarcelle:#2F6E78;--gris:#5D6B72;--filet:#E0E4E2}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--blanc);color:var(--marine);font-family:"Liberation Sans",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 64px}
+  header{text-align:center;padding-bottom:22px}
+  .logotype{font-family:"Liberation Serif",Georgia,serif;font-size:30px;font-weight:700;letter-spacing:.5px}
+  .logotype a{color:inherit;text-decoration:none}
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase}
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  .kicker{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:6px}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-size:34px;line-height:1.2;text-align:center;margin:8px 0 26px}
+  .section-titre{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin:34px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--filet)}
+  .carte{border:1px solid var(--filet);padding:18px;margin-bottom:12px}
+  .carte h3{font-family:"Liberation Serif",Georgia,serif;font-size:19px;margin-bottom:6px}
+  .carte p{font-size:14.5px;color:var(--gris)}
+  .carte .gros{font-family:"Liberation Serif",Georgia,serif;font-size:30px;color:var(--marine);margin:8px 0 2px;font-weight:700}
+  .carte a.btn{display:inline-block;margin-top:10px;background:var(--marine);color:var(--blanc);text-decoration:none;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:11px 18px}
+  .carte a.btn:hover{background:var(--sarcelle)}
+  .marche-jour{font-family:"Liberation Serif",Georgia,serif;font-size:20px;margin:6px 0}
+  .liste-marches{font-size:14px;color:var(--gris);margin-top:10px}
+  .liste-marches strong{color:var(--marine)}
+  .liste-marches div{padding:4px 0;border-bottom:1px solid var(--filet)}
+  .liste-marches div:last-child{border-bottom:none}
+  .note{margin-top:30px;padding:14px 18px;border-left:2px solid var(--sarcelle);background:rgba(47,110,120,.05);font-size:13px;color:var(--gris)}
+  .note a{color:var(--sarcelle);font-weight:700}
+  .nl-box{margin:38px auto 0;max-width:440px;padding:22px 22px 18px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle)}
+  .nl-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px;text-align:center}
+  .nl-text{font-size:14.5px;color:var(--gris);text-align:center;margin-bottom:16px}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-form input{border:1px solid var(--filet);padding:13px 14px;font-size:15px;font-family:inherit;color:var(--marine);background:transparent;outline:none}
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-form button{background:var(--marine);color:var(--blanc);border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px}
+  .nl-form button:hover{background:var(--sarcelle)}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
+  .nl-merci{text-align:center;font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
+  footer{margin-top:44px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logotype"><a href="/">Pays d&rsquo;Omer</a></div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+  </header>
+  <div class="filet-eau"></div>
+
+  <div class="kicker">L&rsquo;essentiel utile</div>
+  <h1>Gardes &amp; services</h1>
+
+  <div class="section-titre">Urgences &amp; gardes</div>
+  <div class="carte">
+    <h3>Pharmacie de garde</h3>
+    <p>Le 3237 (0,35&nbsp;€/min) ou le site officiel vous indiquent la pharmacie de garde la plus proche, 24h/24.</p>
+    <div class="gros">32 37</div>
+    <a class="btn" href="https://www.3237.fr" target="_blank" rel="noopener">Trouver ma pharmacie de garde</a>
+  </div>
+  <div class="carte">
+    <h3>Médecin de garde</h3>
+    <p>La nuit, le week-end et les jours fériés, quand votre médecin est fermé et que ce n&rsquo;est pas une urgence vitale.</p>
+    <div class="gros">116 117</div>
+    <p>Urgence vitale : <strong>15</strong> (SAMU) ou <strong>112</strong>.</p>
+  </div>
+
+  <div class="section-titre">Les marchés</div>
+  <div class="carte">
+    <h3 id="marche-titre">Les marchés du jour</h3>
+    <div class="marche-jour" id="marche-jour">…</div>
+    <div class="liste-marches" id="marche-semaine"></div>
+    <p style="margin-top:10px;font-size:12.5px">Source : <a href="https://www.tourisme-saintomer.com/sortir/agenda/les-marches-du-pays-de-saint-omer/" target="_blank" rel="noopener" style="color:var(--sarcelle)">Office de Tourisme du Pays de Saint-Omer</a></p>
+  </div>
+
+  <div class="section-titre">Déchets</div>
+  <div class="carte">
+    <h3>Collecte &amp; déchetteries</h3>
+    <p>Jours de collecte par commune, horaires des déchetteries et alertes de modification (jours fériés, fortes chaleurs) : tout est sur le site de la CAPSO.</p>
+    <a class="btn" href="https://www.ca-pso.fr/quotidien/dechets/" target="_blank" rel="noopener">Infos déchets CAPSO</a>
+  </div>
+
+  <div class="note">
+    Une garde ou un service manque ? Écris-nous — cette page s&rsquo;enrichit avec vos besoins.
+    Voir aussi : <a href="/agenda.html">l&rsquo;Agenda de l&rsquo;Audomarois</a> et <a href="/aa_en_direct.html">l&rsquo;Aa en direct</a>.
+  </div>
+
+  <div class="nl-box" id="nl-box">
+    <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+    <p class="nl-text">L&rsquo;essentiel de l&rsquo;Audomarois, chaque semaine dans ta boîte mail.</p>
+    <form class="nl-form" onsubmit="submitEmail(event)">
+      <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+      <button type="submit" id="nl-btn">Recevoir la lettre</button>
+    </form>
+    <p class="nl-rgpd">Jamais partagée, désinscription à tout moment.</p>
+  </div>
+  <p class="nl-merci" id="nl-merci">Bien reçu — à très vite dans ta boîte mail.</p>
+
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+  </footer>
+</div>
+
+<script>
+/* Marchés hebdomadaires du Pays de Saint-Omer — source Office de Tourisme (juillet 2026) */
+const MARCHES = {
+  1: ["Pihem"],
+  2: ["Thérouanne", "Ecques", "Merck-Saint-Liévin", "Arques"],
+  3: ["Affringues", "Saint-Omer (quartier Perpignan)", "Esquerdes"],
+  4: ["Saint-Omer (quartier Haut-Pont)", "Blendecques", "Fauquembergues"],
+  5: ["Lumbres", "Zudausques", "Éperlecques", "Aire-sur-la-Lys"],
+  6: ["Saint-Omer (centre-ville)"],
+  0: ["Wizernes"]
+};
+const JOURS = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+
+(function(){
+  const d = new Date();
+  const auj = MARCHES[d.getDay()] || [];
+  document.getElementById("marche-jour").textContent =
+    auj.length ? "Aujourd'hui : " + auj.join(", ") : "Pas de marché hebdomadaire recensé aujourd'hui.";
+  let html = "";
+  for(let i=1;i<=7;i++){
+    const dow = i % 7;
+    html += "<div><strong>"+JOURS[dow]+"</strong> — "+((MARCHES[dow]||[]).join(", ")||"—")+"</div>";
+  }
+  document.getElementById("marche-semaine").innerHTML = html;
+})();
+
+function submitEmail(ev){
+  ev.preventDefault();
+  const email = document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn = document.getElementById("nl-btn");
+  btn.disabled = true; btn.textContent = "Envoi…";
+  const body = new URLSearchParams({email:email, score:"", titre:"", source:"services"});
+  fetch(WEBHOOK,{method:"POST",body:body,mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display="none";
+    document.getElementById("nl-merci").style.display="block";
+  });
+}
+</script>
+</body>
+</html>

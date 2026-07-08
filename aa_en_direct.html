@@ -71,6 +71,16 @@
     background:rgba(47,110,120,.05);font-size:13.5px;color:var(--gris);
   }
   .note a{color:var(--sarcelle);font-weight:700}
+  .nl-box{margin:38px auto 0;max-width:440px;padding:22px 22px 18px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle)}
+  .nl-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px;text-align:center}
+  .nl-text{font-size:14.5px;color:var(--gris);text-align:center;margin-bottom:16px}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-form input{border:1px solid var(--filet);padding:13px 14px;font-size:15px;font-family:inherit;color:var(--marine);background:transparent;outline:none}
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-form button{background:var(--marine);color:var(--blanc);border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px}
+  .nl-form button:hover{background:var(--sarcelle)}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
+  .nl-merci{text-align:center;font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
   footer{margin-top:44px;text-align:center}
   @media(max-width:480px){
     h1{font-size:28px}
@@ -108,6 +118,17 @@
     en période de crue, référez-vous à <a href="https://www.vigicrues.gouv.fr" target="_blank" rel="noopener">vigicrues.gouv.fr</a>
     et aux consignes de votre mairie.
   </div>
+
+  <div class="nl-box" id="nl-box">
+    <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+    <p class="nl-text">L&rsquo;eau, le marais et les histoires de fond de l&rsquo;Audomarois — chaque semaine dans ta boîte mail.</p>
+    <form class="nl-form" onsubmit="submitEmail(event)">
+      <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+      <button type="submit" id="nl-btn">Recevoir la lettre</button>
+    </form>
+    <p class="nl-rgpd">Jamais partagée, désinscription à tout moment.</p>
+  </div>
+  <p class="nl-merci" id="nl-merci">Bien reçu — à très vite dans ta boîte mail.</p>
 
   <footer>
     <div class="filet-eau"></div>
@@ -221,6 +242,20 @@ async function charger(){
   }
   document.getElementById("maj").textContent =
     "Actualisé le " + heure(new Date()) + " — rafraîchissement automatique toutes les 15 minutes.";
+}
+
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+function submitEmail(ev){
+  ev.preventDefault();
+  const email = document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn = document.getElementById("nl-btn");
+  btn.disabled = true; btn.textContent = "Envoi…";
+  const body = new URLSearchParams({email:email, score:"", titre:"", source:"vigie_aa"});
+  fetch(WEBHOOK,{method:"POST",body:body,mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display="none";
+    document.getElementById("nl-merci").style.display="block";
+  });
 }
 
 charger();
