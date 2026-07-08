@@ -77,6 +77,10 @@
   .nl-merci{text-align:center;font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
   footer{margin-top:44px;text-align:center}
   @media(max-width:480px){h1{font-size:28px}.evt{grid-template-columns:1fr}}
+  .topnav{display:flex;justify-content:center;gap:6px 22px;flex-wrap:wrap;margin:18px 0 0}
+  .topnav a{color:var(--gris);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 2px;border-bottom:2px solid transparent}
+  .topnav a:hover{color:var(--sarcelle)}
+  .topnav a.active{color:var(--marine);border-bottom-color:var(--sarcelle)}
 </style>
 </head>
 <body>
@@ -85,6 +89,13 @@
     <div class="logotype"><a href="/">Pays d&rsquo;Omer</a></div>
     <div class="filet-marque"></div>
     <div class="signature">La lettre de l&rsquo;Audomarois</div>
+    <nav class="topnav">
+      <a href="/">Accueil</a>
+      <a href="/agenda.html" class="active">Agenda</a>
+      <a href="/aa_en_direct.html">L&rsquo;Aa en direct</a>
+      <a href="/services.html">Services</a>
+      <a href="/quiz.html">Quiz</a>
+    </nav>
   </header>
   <div class="filet-eau"></div>
 
