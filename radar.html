@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Radar d'Omer — Pays d'Omer</title>
+<meta name="description" content="La veille démocratique de l'Audomarois : prochains conseils municipaux, comptes rendus, enquêtes publiques et consultations en cours.">
+<meta property="og:title" content="Le Radar d'Omer">
+<meta property="og:description" content="Conseils municipaux, enquêtes publiques, consultations : ce qui se décide autour de chez vous.">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#122E26">
+<style>
+  :root{--marine:#14263A;--blanc:#FBFBF9;--sarcelle:#2F6E78;--gris:#5D6B72;--filet:#E0E4E2}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--blanc);color:var(--marine);font-family:"Liberation Sans",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:32px 20px 64px}
+  header{text-align:center;padding-bottom:22px}
+  .logotype{font-family:"Liberation Serif",Georgia,serif;font-size:30px;font-weight:700;letter-spacing:.5px}
+  .logotype a{color:inherit;text-decoration:none}
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase}
+  .topnav{display:flex;justify-content:center;gap:6px 22px;flex-wrap:wrap;margin:18px 0 0}
+  .topnav a{color:var(--gris);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 2px;border-bottom:2px solid transparent}
+  .topnav a:hover{color:var(--sarcelle)}
+  .topnav a.active{color:var(--marine);border-bottom-color:var(--sarcelle)}
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  .kicker{text-align:center;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:6px}
+  h1{font-family:"Liberation Serif",Georgia,serif;font-size:34px;line-height:1.2;text-align:center;margin:8px 0 6px}
+  .maj{text-align:center;color:var(--gris);font-size:13px;margin-bottom:26px}
+  .section-titre{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin:34px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--filet)}
+  .item{display:block;padding:13px 0;border-bottom:1px solid var(--filet)}
+  .item:last-child{border-bottom:none}
+  .item .i-titre{font-family:"Liberation Serif",Georgia,serif;font-size:17.5px;font-weight:700;line-height:1.3}
+  .item .i-titre a{color:inherit;text-decoration:none}
+  .item .i-titre a:hover{color:var(--sarcelle)}
+  .item .i-meta{font-size:13px;color:var(--gris)}
+  .vide{text-align:center;color:var(--gris);padding:30px 0;font-size:15px;font-style:italic}
+  .note{margin-top:34px;padding:14px 18px;border-left:2px solid var(--sarcelle);background:rgba(47,110,120,.05);font-size:13px;color:var(--gris)}
+  .note a{color:var(--sarcelle);font-weight:700}
+  .nl-box{margin:38px auto 0;max-width:440px;padding:22px 22px 18px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle)}
+  .nl-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px;text-align:center}
+  .nl-text{font-size:14.5px;color:var(--gris);text-align:center;margin-bottom:16px}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-form input{border:1px solid var(--filet);padding:13px 14px;font-size:15px;font-family:inherit;color:var(--marine);background:transparent;outline:none}
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-form button{background:var(--marine);color:var(--blanc);border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px}
+  .nl-form button:hover{background:var(--sarcelle)}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
+  .nl-merci{text-align:center;font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
+  footer{margin-top:44px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logotype"><a href="/">Pays d&rsquo;Omer</a></div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+    <nav class="topnav">
+      <a href="/">Accueil</a>
+      <a href="/agenda.html">Agenda</a>
+      <a href="/aa_en_direct.html">L&rsquo;Aa en direct</a>
+      <a href="/services.html">Services</a>
+      <a href="/radar.html" class="active">Radar</a>
+      <a href="/quiz.html">Quiz</a>
+    </nav>
+  </header>
+  <div class="filet-eau"></div>
+
+  <div class="kicker">La veille démocratique</div>
+  <h1>Le Radar d&rsquo;Omer</h1>
+  <p class="maj" id="maj">Ce qui se décide autour de chez vous — chargement…</p>
+
+  <div class="section-titre">Enquêtes publiques &amp; consultations</div>
+  <div id="enquetes"><p class="vide">Chargement…</p></div>
+
+  <div class="section-titre">Conseils municipaux &amp; communautaires</div>
+  <div id="conseils"><p class="vide">Chargement…</p></div>
+
+  <div class="note">
+    Veille automatique quotidienne des sites officiels : villes de <a href="https://www.ville-saint-omer.fr/ma-ville/mairie/le-conseil-municipal" target="_blank" rel="noopener">Saint-Omer</a>,
+    <a href="https://ville-arques.fr/ma-ville/ma-mairie/les-deliberations/" target="_blank" rel="noopener">Arques</a>,
+    <a href="https://www.ville-airesurlalys.fr/votre-mairie/reunions-du-conseil/" target="_blank" rel="noopener">Aire-sur-la-Lys</a>,
+    <a href="https://www.ca-pso.fr/consultations/" target="_blank" rel="noopener">CAPSO</a> et
+    <a href="https://www.pas-de-calais.gouv.fr/Publications/Consultation-du-public" target="_blank" rel="noopener">préfecture du Pas-de-Calais</a>.
+    Les intitulés sont générés automatiquement : référez-vous toujours aux documents officiels liés. Une commune manque ? Écris-nous.
+  </div>
+
+  <div class="nl-box" id="nl-box">
+    <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+    <p class="nl-text">Ce qui se décide dans l&rsquo;Audomarois, expliqué simplement — chaque semaine dans ta boîte mail.</p>
+    <form class="nl-form" onsubmit="submitEmail(event)">
+      <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+      <button type="submit" id="nl-btn">Recevoir la lettre</button>
+    </form>
+    <p class="nl-rgpd">Jamais partagée, désinscription à tout moment.</p>
+  </div>
+  <p class="nl-merci" id="nl-merci">Bien reçu — à très vite dans ta boîte mail.</p>
+
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+  </footer>
+</div>
+
+<script>
+const SHEET_ID = "1RcKWS5JGtvCP38wNi04vKKWwj0d_wz7N99AUcVR3iaM";
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+
+(async function(){
+  try{
+    const url="https://docs.google.com/spreadsheets/d/"+SHEET_ID+"/gviz/tq?tqx=out:json&range=R2:R2&headers=0";
+    const r=await fetch(url);
+    const t=await r.text();
+    const j=JSON.parse(t.substring(t.indexOf("{"),t.lastIndexOf("}")+1));
+    const cell=j.table.rows&&j.table.rows[0]&&j.table.rows[0].c[0]&&j.table.rows[0].c[0].v;
+    if(!cell) throw 0;
+    const data=JSON.parse(cell);
+    document.getElementById("maj").textContent="Ce qui se décide autour de chez vous — veille actualisée le "+(data.maj||"aujourd'hui")+".";
+    const enq=(data.enquetes||[]);
+    document.getElementById("enquetes").innerHTML = enq.length
+      ? enq.map(e=>'<div class="item"><div class="i-titre">'+(e.u?'<a href="'+e.u+'" target="_blank" rel="noopener">'+e.t+'</a>':e.t)+'</div><div class="i-meta">'+[e.c,e.p].filter(Boolean).join(" · ")+'</div></div>').join("")
+      : '<p class="vide">Aucune enquête publique recensée en ce moment sur le territoire.</p>';
+    const cons=(data.conseils||[]);
+    document.getElementById("conseils").innerHTML = cons.length
+      ? cons.map(c=>'<div class="item"><div class="i-titre">'+(c.u?'<a href="'+c.u+'" target="_blank" rel="noopener">'+c.t+'</a>':c.t)+'</div><div class="i-meta">'+(c.c||"")+'</div></div>').join("")
+      : '<p class="vide">Rien de recensé pour l&rsquo;instant — la veille s&rsquo;enrichit chaque jour.</p>';
+  }catch(e){
+    document.getElementById("enquetes").innerHTML='<p class="vide">Veille momentanément indisponible.</p>';
+    document.getElementById("conseils").innerHTML="";
+    document.getElementById("maj").textContent="Ce qui se décide autour de chez vous.";
+  }
+})();
+
+function submitEmail(ev){
+  ev.preventDefault();
+  const email=document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn=document.getElementById("nl-btn");
+  btn.disabled=true; btn.textContent="Envoi…";
+  const body=new URLSearchParams({email:email, score:"", titre:"", source:"radar"});
+  fetch(WEBHOOK,{method:"POST",body:body,mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display="none";
+    document.getElementById("nl-merci").style.display="block";
+  });
+}
+</script>
+</body>
+</html>
