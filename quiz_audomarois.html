@@ -107,6 +107,24 @@
     text-align:center;font-size:12.5px;color:var(--sarcelle);height:18px;
     letter-spacing:1px;text-transform:uppercase;font-weight:700;
   }
+  /* ——— Newsletter ——— */
+  .nl-box{
+    margin:34px auto 0;max-width:440px;padding:22px 22px 18px;
+    border:1px solid var(--filet);border-top:2px solid var(--sarcelle);
+  }
+  .nl-kicker{
+    font-size:11px;letter-spacing:3px;text-transform:uppercase;
+    color:var(--sarcelle);font-weight:700;margin-bottom:8px;text-align:center;
+  }
+  .nl-text{font-size:14.5px;color:var(--gris);text-align:center;margin-bottom:16px}
+  .nl-form{display:flex;flex-direction:column;gap:10px}
+  .nl-form input{
+    border:1px solid var(--filet);padding:13px 14px;font-size:15px;
+    font-family:inherit;color:var(--marine);background:transparent;outline:none;
+  }
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-btn{max-width:none}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
   footer{margin-top:44px;text-align:center}
   footer .signature{margin-top:8px}
   .repere{
@@ -171,6 +189,21 @@
       <button class="btn" onclick="shareResult()">Partager mon titre</button>
       <button class="btn secondary" onclick="restart()">Rejouer</button>
       <p class="copied" id="r-copied"></p>
+    </div>
+
+    <div class="nl-box" id="nl-box">
+      <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+      <p class="nl-text">Les histoires de fond de l&rsquo;Audomarois, directement dans ta boîte mail.
+      Laisse ton adresse pour recevoir la lettre de Pays d&rsquo;Omer — c&rsquo;est optionnel, et sans spam.</p>
+      <form class="nl-form" onsubmit="submitEmail(event)">
+        <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+        <button type="submit" class="btn nl-btn" id="nl-btn">Recevoir la lettre</button>
+      </form>
+      <p class="nl-rgpd">Ton adresse ne sert qu&rsquo;à l&rsquo;envoi de la lettre. Jamais partagée, désinscription à tout moment.</p>
+    </div>
+    <div class="nl-box nl-merci" id="nl-merci" style="display:none">
+      <div class="nl-kicker">C&rsquo;est noté</div>
+      <p class="nl-text">Bien reçu — à très vite dans ta boîte mail. D&rsquo;ici là, défie tes proches avec le quiz !</p>
     </div>
   </section>
 
@@ -303,6 +336,22 @@ function result(){
   document.getElementById("r-titre").textContent = "« " + t.t + " »";
   document.getElementById("r-sub").textContent = t.s;
   show("screen-result");
+}
+
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+
+function submitEmail(ev){
+  ev.preventDefault();
+  const email = document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn = document.getElementById("nl-btn");
+  btn.disabled = true; btn.textContent = "Envoi…";
+  const t = titreFor(score);
+  const body = new URLSearchParams({email:email, score:String(score), titre:t.t, source:"quiz_audomarois"});
+  fetch(WEBHOOK, {method:"POST", body:body, mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display = "none";
+    document.getElementById("nl-merci").style.display = "block";
+  });
 }
 
 function shareResult(){
