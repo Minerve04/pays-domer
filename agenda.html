@@ -138,7 +138,9 @@ const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
 let EVENTS = [];
 let periode = "jour";
 
-function iso(d){ return d.toISOString().slice(0,10); }
+function iso(d){
+  return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+}
 function today(){ const d=new Date(); d.setHours(0,0,0,0); return d; }
 
 function bornes(p){
@@ -146,13 +148,14 @@ function bornes(p){
   if(p==="jour") return [iso(t), iso(t)];
   if(p==="semaine"){ const f=new Date(t); f.setDate(f.getDate()+6); return [iso(t), iso(f)]; }
   if(p==="mois"){ const f=new Date(t); f.setDate(f.getDate()+30); return [iso(t), iso(f)]; }
-  /* week-end : vendredi soir → dimanche */
-  const d=new Date(t); const dow=d.getDay(); /* 0=dim */
-  const ven=new Date(d); ven.setDate(d.getDate() + ((5 - dow + 7) % 7)); /* prochain vendredi (ou aujourd'hui si ven) */
-  if(dow===6||dow===0){ ven.setDate(d.getDate()); } /* si on est déjà le week-end */
-  const dim=new Date(ven); dim.setDate(ven.getDate() + (dow===0?0:(7-((ven.getDay()||7)))));
-  const dim2=new Date(ven); dim2.setDate(ven.getDate()+2 - (ven.getDay()===6?1:0) - (ven.getDay()===0?2:0));
-  return [iso(dow===0?d:ven), iso(dim2)];
+  /* week-end : du prochain vendredi (ou aujourd'hui si on est ven/sam/dim) au dimanche suivant */
+  const dow = t.getDay(); /* 0=dim ... 6=sam */
+  const debut = new Date(t);
+  if(dow >= 1 && dow <= 4){ debut.setDate(t.getDate() + (5 - dow)); } /* lun-jeu → vendredi */
+  const fin = new Date(debut);
+  const ddow = debut.getDay();
+  fin.setDate(debut.getDate() + (ddow === 0 ? 0 : 7 - ddow)); /* → dimanche */
+  return [iso(debut), iso(fin)];
 }
 
 function parseGviz(text){
