@@ -125,6 +125,13 @@
   .nl-form input:focus{border-color:var(--sarcelle)}
   .nl-btn{max-width:none}
   .nl-rgpd{font-size:11.5px;color:var(--gris);text-align:center;margin-top:12px;opacity:.85}
+  .nl-skip{text-align:center;margin-top:18px}
+  .nl-skip a{color:var(--gris);font-size:13.5px;text-decoration:none;border-bottom:1px solid var(--filet)}
+  .nl-skip a:hover{color:var(--sarcelle);border-color:var(--sarcelle)}
+  .nl-confirm{
+    text-align:center;font-size:13px;color:var(--sarcelle);font-weight:700;
+    margin-top:22px;letter-spacing:.5px;
+  }
   footer{margin-top:44px;text-align:center}
   footer .signature{margin-top:8px}
   .repere{
@@ -177,6 +184,23 @@
     </div>
   </section>
 
+  <!-- ÉCRAN EMAIL (avant résultat) -->
+  <section class="screen" id="screen-email">
+    <div class="kicker">Une dernière chose</div>
+    <h1>Ton titre est prêt.</h1>
+    <p class="intro-text">Avant de le découvrir : Pays d&rsquo;Omer raconte les histoires de fond
+    de l&rsquo;Audomarois. Laisse ton email pour recevoir la lettre — ou passe directement à ton résultat.</p>
+    <div class="nl-box">
+      <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
+      <form class="nl-form" onsubmit="submitEmail(event)">
+        <input type="email" id="nl-email" placeholder="ton@email.fr" required>
+        <button type="submit" class="btn nl-btn" id="nl-btn">Recevoir la lettre et voir mon titre</button>
+      </form>
+      <p class="nl-rgpd">Ton adresse ne sert qu&rsquo;à l&rsquo;envoi de la lettre. Jamais partagée, désinscription à tout moment.</p>
+    </div>
+    <p class="nl-skip"><a href="#" onclick="skipEmail(event)">Voir mon résultat sans laisser d&rsquo;email →</a></p>
+  </section>
+
   <!-- ÉCRAN RÉSULTAT -->
   <section class="screen" id="screen-result">
     <div class="kicker">Ton résultat</div>
@@ -191,20 +215,7 @@
       <p class="copied" id="r-copied"></p>
     </div>
 
-    <div class="nl-box" id="nl-box">
-      <div class="nl-kicker">La lettre de l&rsquo;Audomarois</div>
-      <p class="nl-text">Les histoires de fond de l&rsquo;Audomarois, directement dans ta boîte mail.
-      Laisse ton adresse pour recevoir la lettre de Pays d&rsquo;Omer — c&rsquo;est optionnel, et sans spam.</p>
-      <form class="nl-form" onsubmit="submitEmail(event)">
-        <input type="email" id="nl-email" placeholder="ton@email.fr" required>
-        <button type="submit" class="btn nl-btn" id="nl-btn">Recevoir la lettre</button>
-      </form>
-      <p class="nl-rgpd">Ton adresse ne sert qu&rsquo;à l&rsquo;envoi de la lettre. Jamais partagée, désinscription à tout moment.</p>
-    </div>
-    <div class="nl-box nl-merci" id="nl-merci" style="display:none">
-      <div class="nl-kicker">C&rsquo;est noté</div>
-      <p class="nl-text">Bien reçu — à très vite dans ta boîte mail. D&rsquo;ici là, défie tes proches avec le quiz !</p>
-    </div>
+    <p class="nl-confirm" id="nl-confirm" style="display:none">Ton inscription à la lettre est bien notée — à très vite dans ta boîte mail.</p>
   </section>
 
   <footer>
@@ -320,7 +331,9 @@ function answer(i, btn){
 
 function next(){
   idx++;
-  if(idx >= QUESTIONS.length){ result(); } else { render(); }
+  if(idx >= QUESTIONS.length){
+    if(subscribed){ result(); } else { show("screen-email"); }
+  } else { render(); }
 }
 
 function titreFor(s){
@@ -339,6 +352,7 @@ function result(){
 }
 
 const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+let subscribed = false;
 
 function submitEmail(ev){
   ev.preventDefault();
@@ -349,9 +363,15 @@ function submitEmail(ev){
   const t = titreFor(score);
   const body = new URLSearchParams({email:email, score:String(score), titre:t.t, source:"quiz_audomarois"});
   fetch(WEBHOOK, {method:"POST", body:body, mode:"no-cors"}).finally(()=>{
-    document.getElementById("nl-box").style.display = "none";
-    document.getElementById("nl-merci").style.display = "block";
+    subscribed = true;
+    document.getElementById("nl-confirm").style.display = "block";
+    result();
   });
+}
+
+function skipEmail(ev){
+  ev.preventDefault();
+  result();
 }
 
 function shareResult(){
