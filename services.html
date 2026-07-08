@@ -107,6 +107,15 @@
     <p style="margin-top:10px;font-size:12.5px">Source : <a href="https://www.tourisme-saintomer.com/sortir/agenda/les-marches-du-pays-de-saint-omer/" target="_blank" rel="noopener" style="color:var(--sarcelle)">Office de Tourisme du Pays de Saint-Omer</a></p>
   </div>
 
+  <div class="section-titre">Offices religieux</div>
+  <div class="carte">
+    <h3>Les prochaines messes</h3>
+    <p id="off-intro">Chargement des horaires…</p>
+    <div class="liste-marches" id="off-liste"></div>
+    <p style="margin-top:10px;font-size:12.5px">Source : <a href="https://messes.info/horaires/62500" target="_blank" rel="noopener" style="color:var(--sarcelle)">messes.info</a> (annuaire officiel de l&rsquo;Église catholique), actualisé automatiquement.
+    Un autre lieu de culte à référencer ? Écris-nous.</p>
+  </div>
+
   <div class="section-titre">Déchets</div>
   <div id="alertes-dechets"></div>
   <div class="carte">
@@ -224,6 +233,29 @@ function statutDechetteries(){
   document.getElementById("dech-horaires").innerHTML=estEte(new Date())
     ? "<strong>Horaires d'été</strong> (jusqu'à fin octobre) : du lundi au samedi, 9h – 18h30."
     : "<strong>Horaires d'hiver</strong> : lun-ven 9h – 11h45 et 14h – 17h30 · samedi 9h – 17h30.";
+})();
+
+/* ——— Offices religieux (messes.info via la feuille de données) ——— */
+(async function(){
+  const box=document.getElementById("off-liste"), intro=document.getElementById("off-intro");
+  try{
+    const url="https://docs.google.com/spreadsheets/d/1RcKWS5JGtvCP38wNi04vKKWwj0d_wz7N99AUcVR3iaM/gviz/tq?tqx=out:json&range=P2:P2&headers=0";
+    const r=await fetch(url);
+    const t=await r.text();
+    const j=JSON.parse(t.substring(t.indexOf("{"),t.lastIndexOf("}")+1));
+    const cell=j.table.rows&&j.table.rows[0]&&j.table.rows[0].c[0]&&j.table.rows[0].c[0].v;
+    if(!cell) throw 0;
+    const offs=JSON.parse(cell).filter(o=>o.d>=isoLocal(new Date())).slice(0,12);
+    if(!offs.length) throw 0;
+    intro.textContent="Dans l'agglo, les prochains jours :";
+    box.innerHTML=offs.map(o=>{
+      const d=new Date(o.d+"T12:00:00").toLocaleDateString("fr-FR",{weekday:"long",day:"numeric",month:"long"});
+      const lieu=(o.e?o.e+" — ":"")+(o.c||"");
+      return "<div><strong>"+d+" · "+o.h+"</strong> — "+(o.u?'<a href="'+o.u+'" target="_blank" rel="noopener" style="color:inherit">'+lieu+"</a>":lieu)+(o.f?" <em>("+o.f+")</em>":"")+"</div>";
+    }).join("");
+  }catch(e){
+    intro.innerHTML='Horaires momentanément indisponibles — consultez <a href="https://messes.info/horaires/62500" target="_blank" rel="noopener" style="color:var(--sarcelle)">messes.info</a>.';
+  }
 })();
 
 /* ——— Alertes collecte (détectées automatiquement sur ca-pso.fr) ——— */
