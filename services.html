@@ -34,6 +34,13 @@
   .liste-marches strong{color:var(--marine)}
   .liste-marches div{padding:4px 0;border-bottom:1px solid var(--filet)}
   .liste-marches div:last-child{border-bottom:none}
+  .badge{display:inline-block;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;padding:3px 10px;vertical-align:middle;margin-left:8px}
+  .badge.ouvert{background:rgba(47,110,120,.12);color:var(--sarcelle)}
+  .badge.ferme{background:rgba(156,74,60,.1);color:#9C4A3C}
+  .alerte-dechets{border:1px solid #9C4A3C;border-left:4px solid #9C4A3C;padding:14px 18px;margin-bottom:12px;background:rgba(156,74,60,.05)}
+  .alerte-dechets .a-titre{font-weight:700;font-size:15px;color:#9C4A3C}
+  .alerte-dechets .a-p{font-size:13px;color:var(--gris)}
+  .alerte-dechets a{color:#9C4A3C}
   .note{margin-top:30px;padding:14px 18px;border-left:2px solid var(--sarcelle);background:rgba(47,110,120,.05);font-size:13px;color:var(--gris)}
   .note a{color:var(--sarcelle);font-weight:700}
   .nl-box{margin:38px auto 0;max-width:440px;padding:22px 22px 18px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle)}
@@ -95,10 +102,19 @@
   </div>
 
   <div class="section-titre">Déchets</div>
+  <div id="alertes-dechets"></div>
   <div class="carte">
-    <h3>Collecte &amp; déchetteries</h3>
-    <p>Jours de collecte par commune, horaires des déchetteries et alertes de modification (jours fériés, fortes chaleurs) : tout est sur le site de la CAPSO.</p>
-    <a class="btn" href="https://www.ca-pso.fr/quotidien/dechets/" target="_blank" rel="noopener">Infos déchets CAPSO</a>
+    <h3>Les déchetteries <span class="badge" id="dech-badge">…</span></h3>
+    <p id="dech-statut">Vérification des horaires…</p>
+    <div class="liste-marches" id="dech-liste"></div>
+    <p style="margin-top:12px;font-size:13px" id="dech-horaires"></p>
+    <p style="margin-top:8px;font-size:12px;color:var(--gris)">Les 6 déchetteries du SMLA partagent les mêmes horaires. Fermées les dimanches et jours fériés.
+    Horaires vérifiés le 08/07/2026 auprès de la <a href="https://www.ca-pso.fr/quotidien/dechets/decheteries/" target="_blank" rel="noopener" style="color:var(--sarcelle)">CAPSO</a>.</p>
+  </div>
+  <div class="carte">
+    <h3>Collecte des déchets</h3>
+    <p>Jours de collecte par commune : <a href="https://www.ca-pso.fr/quotidien/dechets/calendrier/" target="_blank" rel="noopener" style="color:var(--sarcelle);font-weight:700">calendrier officiel CAPSO</a>.
+    Les modifications (fériés, canicule) s&rsquo;affichent automatiquement en alerte ci-dessus dès que la CAPSO les annonce.</p>
   </div>
 
   <div class="note">
@@ -148,6 +164,79 @@ const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
     html += "<div><strong>"+JOURS[dow]+"</strong> — "+((MARCHES[dow]||[]).join(", ")||"—")+"</div>";
   }
   document.getElementById("marche-semaine").innerHTML = html;
+})();
+
+/* ——— Déchetteries SMLA — source CAPSO, vérifié le 08/07/2026 ———
+   Été (du ~5 avril à fin octobre) : lun-sam 9h-18h30.
+   Hiver : lun-ven 9h-11h45 & 14h-17h30, sam 9h-17h30. Fermé dimanche & fériés. */
+const DECHETTERIES = [
+  ["Arques","Rue Colbert, ZI du Lobel"],
+  ["Longuenesse","Route des Bruyères (face à la prison)"],
+  ["Saint-Martin-lez-Tatinghem","Rue du Bras"],
+  ["Aire-sur-la-Lys","Zone d'Activité Saint-Martin"],
+  ["Lumbres","RD 342, lieu-dit « Derrière la Grange »"],
+  ["Dennebroeucq","Lieu-dit le Moulin à vent, RD 92E"]
+];
+const FERIES = ["2026-07-14","2026-08-15","2026-11-01","2026-11-11","2026-12-25",
+  "2027-01-01","2027-03-29","2027-04-05"/*approx sécurité*/,"2027-05-01","2027-05-06","2027-05-08","2027-05-17","2027-07-14","2027-08-15","2027-11-01","2027-11-11","2027-12-25"];
+function isoLocal(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function estEte(d){const m=d.getMonth()+1,j=d.getDate();return (m>4||(m===4&&j>=5))&&(m<11);}
+function creneaux(d){
+  if(d.getDay()===0||FERIES.includes(isoLocal(d))) return [];
+  if(estEte(d)) return [[9*60,18*60+30]];
+  if(d.getDay()===6) return [[9*60,17*60+30]];
+  return [[9*60,11*60+45],[14*60,17*60+30]];
+}
+function fmtH(m){return Math.floor(m/60)+"h"+(m%60?String(m%60).padStart(2,"0"):"");}
+function statutDechetteries(){
+  const now=new Date(), mins=now.getHours()*60+now.getMinutes();
+  const cs=creneaux(now);
+  for(const [a,b] of cs){
+    if(mins>=a&&mins<b) return {ouvert:true, txt:"Ouvertes en ce moment, jusqu'à "+fmtH(b)+"."};
+    if(mins<a) return {ouvert:false, txt:"Fermées — réouverture aujourd'hui à "+fmtH(a)+"."};
+  }
+  /* fermé : chercher la prochaine ouverture */
+  const d=new Date(now);
+  for(let i=1;i<=8;i++){
+    d.setDate(d.getDate()+1);
+    const c=creneaux(d);
+    if(c.length){
+      const jour=d.toLocaleDateString("fr-FR",{weekday:"long"});
+      const demain=(i===1)?"demain":jour;
+      return {ouvert:false, txt:"Fermées — réouverture "+demain+" à "+fmtH(c[0][0])+"."};
+    }
+  }
+  return {ouvert:false, txt:"Fermées."};
+}
+(function(){
+  const s=statutDechetteries();
+  const badge=document.getElementById("dech-badge");
+  badge.textContent=s.ouvert?"Ouvertes":"Fermées";
+  badge.className="badge "+(s.ouvert?"ouvert":"ferme");
+  document.getElementById("dech-statut").textContent=s.txt;
+  document.getElementById("dech-liste").innerHTML=DECHETTERIES.map(d=>"<div><strong>"+d[0]+"</strong> — "+d[1]+"</div>").join("");
+  document.getElementById("dech-horaires").innerHTML=estEte(new Date())
+    ? "<strong>Horaires d'été</strong> (jusqu'à fin octobre) : du lundi au samedi, 9h – 18h30."
+    : "<strong>Horaires d'hiver</strong> : lun-ven 9h – 11h45 et 14h – 17h30 · samedi 9h – 17h30.";
+})();
+
+/* ——— Alertes collecte (détectées automatiquement sur ca-pso.fr) ——— */
+(async function(){
+  try{
+    const url="https://docs.google.com/spreadsheets/d/1RcKWS5JGtvCP38wNi04vKKWwj0d_wz7N99AUcVR3iaM/gviz/tq?tqx=out:json&range=N2:N2&headers=0";
+    const r=await fetch(url);
+    const t=await r.text();
+    const j=JSON.parse(t.substring(t.indexOf("{"),t.lastIndexOf("}")+1));
+    const cell=j.table.rows&&j.table.rows[0]&&j.table.rows[0].c[0]&&j.table.rows[0].c[0].v;
+    if(!cell) return;
+    const alertes=JSON.parse(cell);
+    if(!Array.isArray(alertes)||!alertes.length) return;
+    document.getElementById("alertes-dechets").innerHTML=alertes.map(a=>
+      '<div class="alerte-dechets"><div class="a-titre">⚠ '+a.t+'</div>'+
+      (a.p?'<div class="a-p">'+a.p+'</div>':'')+
+      (a.u?'<div class="a-p"><a href="'+a.u+'" target="_blank" rel="noopener">Détails sur ca-pso.fr →</a></div>':'')+
+      '</div>').join("");
+  }catch(e){/* silencieux */}
 })();
 
 function submitEmail(ev){
