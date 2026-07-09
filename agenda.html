@@ -88,6 +88,18 @@
   .topnav a:hover{color:var(--sarcelle)}
   .topnav a.active{color:var(--marine);border-bottom-color:var(--sarcelle)}
 </style>
+<link rel="canonical" href="https://paysdomer.fr/agenda.html">
+<meta property="og:url" content="https://paysdomer.fr/agenda.html">
+<meta property="og:site_name" content="Pays d’Omer">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:image" content="https://paysdomer.fr/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Pays d’Omer — La lettre de l’Audomarois">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://paysdomer.fr/og-cover.png">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://paysdomer.fr/#org","name":"Pays d’Omer","url":"https://paysdomer.fr/","logo":"https://paysdomer.fr/favicon-512.png","description":"Le média utile de l’Audomarois : agenda des sorties, niveau de l’Aa en direct, gardes et services, et la lettre qui raconte les histoires de fond du territoire.","areaServed":"Pays de Saint-Omer, Audomarois, Pas-de-Calais"},{"@type":"WebSite","@id":"https://paysdomer.fr/#website","url":"https://paysdomer.fr/","name":"Pays d’Omer","inLanguage":"fr-FR","publisher":{"@id":"https://paysdomer.fr/#org"}}]}</script>
 </head>
 <body>
 <div class="wrap">
@@ -251,11 +263,35 @@ async function charger(){
       EVENTS.length + " événements recensés — agenda actualisé matin et soir.";
     fillCommunes();
     renderList();
+    injectEventSchema();
   }catch(e){
     document.getElementById("liste").innerHTML =
       '<p class="vide">L&rsquo;agenda est momentanément indisponible. Réessayez dans un instant.</p>';
     document.getElementById("maj").textContent = "";
   }
+}
+
+
+function injectEventSchema(){
+  try{
+    const t = iso(today());
+    const up = EVENTS.filter(e=>e.d2>=t).slice(0,40);
+    if(!up.length) return;
+    const items = up.map((e,i)=>{
+      const ev = {"@type":"Event","name":e.t,"startDate":e.d1,
+        "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+        "location":{"@type":"Place","name":[e.l,e.c].filter(Boolean).join(", ")||"Audomarois",
+          "address":{"@type":"PostalAddress","addressLocality":e.c||"Pays de Saint-Omer","addressCountry":"FR"}}};
+      if(e.d2 && e.d2>e.d1) ev.endDate=e.d2;
+      if(e.u) ev.url=e.u;
+      ev.organizer={"@type":"Organization","name":"Pays d\u2019Omer","url":"https://paysdomer.fr/"};
+      return {"@type":"ListItem","position":i+1,"item":ev};
+    });
+    const g={"@context":"https://schema.org","@type":"ItemList","name":"Agenda de l\u2019Audomarois","itemListElement":items};
+    const old=document.getElementById("evt-schema"); if(old) old.remove();
+    const s=document.createElement("script"); s.type="application/ld+json"; s.id="evt-schema";
+    s.textContent=JSON.stringify(g); document.head.appendChild(s);
+  }catch(err){}
 }
 
 function submitEmail(ev){
