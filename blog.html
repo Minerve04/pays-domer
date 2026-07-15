@@ -17,7 +17,6 @@
 <link rel="canonical" href="https://paysdomer.fr/blog.html">
 <meta property="og:url" content="https://paysdomer.fr/blog.html">
 <meta property="og:site_name" content="Pays d&rsquo;Omer">
-<meta property="og:locale" content="fr_FR">
 <meta property="og:image" content="https://paysdomer.fr/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://paysdomer.fr/og-cover.png">
@@ -96,31 +95,45 @@
 </div>
 
 <script>
+var API = "https://api.github.com/repos/Minerve04/pays-domer/contents/blog";
 function frDate(iso){
-  try{
-    var d=new Date(iso+"T12:00:00");
-    return d.toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});
-  }catch(e){return iso;}
+  try{return new Date(iso+"T12:00:00").toLocaleDateString("fr-FR",{day:"numeric",month:"long",year:"numeric"});}
+  catch(e){return iso;}
 }
-fetch("/blog/posts.json?v="+Date.now())
+function stripTags(s){return (s||"").replace(/<[^>]*>/g,"").trim();}
+function decodeEnt(s){var t=document.createElement("textarea");t.innerHTML=s||"";return t.value;}
+function showEmpty(){document.getElementById("posts").innerHTML='<p class="empty">Les premiers articles arrivent très bientôt.</p>';}
+
+fetch(API)
   .then(function(r){return r.ok?r.json():[];})
-  .then(function(posts){
-    var el=document.getElementById("posts");
-    if(!posts||!posts.length){el.innerHTML='<p class="empty">Les premiers articles arrivent très bientôt.</p>';return;}
-    posts.sort(function(a,b){return (b.date||"").localeCompare(a.date||"");});
-    el.innerHTML=posts.map(function(p){
-      var img=p.image||"/og-cover.png";
-      var slug=p.slug||p.date;
-      return '<a class="post-card" href="/blog/'+slug+'.html">'
-        +'<img src="'+img+'" alt="'+(p.titre||"").replace(/"/g,"&quot;")+'" loading="lazy">'
-        +'<div class="pc-body">'
-        +'<div class="pc-date">'+frDate(p.date)+'</div>'
-        +'<div class="pc-titre">'+(p.titre||"")+'</div>'
-        +'<div class="pc-extrait">'+(p.extrait||"")+'</div>'
-        +'</div></a>';
-    }).join("");
+  .then(function(items){
+    if(!Array.isArray(items)){showEmpty();return;}
+    var posts=items
+      .filter(function(f){return /^\d{4}-\d{2}-\d{2}\.html$/.test(f.name);})
+      .sort(function(a,b){return b.name.localeCompare(a.name);})
+      .slice(0,40);
+    if(!posts.length){showEmpty();return;}
+    return Promise.all(posts.map(function(f){
+      var date=f.name.replace(".html","");
+      return fetch(f.download_url).then(function(r){return r.text();}).then(function(html){
+        var titre=date, extrait="";
+        var mh=html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+        if(mh){titre=decodeEnt(stripTags(mh[1]));}
+        var md=html.match(/<meta name=["']description["'] content=["']([^"']*)["']/i);
+        if(md){extrait=decodeEnt(md[1]);}
+        return {date:date,titre:titre,extrait:extrait,image:"/blog/img/"+date+".png"};
+      }).catch(function(){return {date:date,titre:date,extrait:"",image:"/blog/img/"+date+".png"};});
+    })).then(function(cards){
+      document.getElementById("posts").innerHTML=cards.map(function(p){
+        return '<a class="post-card" href="/blog/'+p.date+'.html">'
+          +'<img src="'+p.image+'" alt="'+(p.titre||"").replace(/"/g,"&quot;")+'" loading="lazy">'
+          +'<div class="pc-body"><div class="pc-date">'+frDate(p.date)+'</div>'
+          +'<div class="pc-titre">'+p.titre+'</div>'
+          +'<div class="pc-extrait">'+p.extrait+'</div></div></a>';
+      }).join("");
+    });
   })
-  .catch(function(){document.getElementById("posts").innerHTML='<p class="empty">Les premiers articles arrivent très bientôt.</p>';});
+  .catch(showEmpty);
 </script>
 </body>
 </html>
