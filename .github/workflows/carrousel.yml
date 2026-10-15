@@ -1,0 +1,65 @@
+name: Carrousel — rendu des slides
+
+on:
+  push:
+    paths:
+      - "carrousel/*/slides.json"
+      - "carrousel/_tools/**"
+  workflow_dispatch:
+    inputs:
+      dossier:
+        description: "Dossier du carrousel (ex. 2026-10-22)"
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: carrousel
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Dossiers à rendre
+        id: dirs
+        run: |
+          if [ -n "${{ github.event.inputs.dossier }}" ]; then
+            echo "list=carrousel/${{ github.event.inputs.dossier }}" >> "$GITHUB_OUTPUT"
+          else
+            LIST=$(git diff --name-only HEAD~1 HEAD -- 'carrousel/*/slides.json' | xargs -r -n1 dirname | sort -u | tr '\n' ' ')
+            if [ -z "$LIST" ]; then
+              LIST=$(ls -d carrousel/*/ | grep -v _tools | sed 's#/$##' | sort | tail -n 1)
+            fi
+            echo "list=$LIST" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Dépendances
+        working-directory: carrousel/_tools
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Rendu
+        run: |
+          for d in ${{ steps.dirs.outputs.list }}; do
+            node carrousel/_tools/render.mjs "$d"
+          done
+
+      - name: Commit des images
+        run: |
+          git config user.name "paysdomer-bot"
+          git config user.email "bot@paysdomer.fr"
+          git add carrousel/*/*.jpg
+          git diff --cached --quiet && echo "Rien à committer" && exit 0
+          git commit -m "Carrousel : rendu des slides (${{ steps.dirs.outputs.list }})"
+          git push
