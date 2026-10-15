@@ -1,0 +1,11 @@
+{
+  "name": "paysdomer-carrousel-tools",
+  "private": true,
+  "type": "module",
+  "description": "Rendu des carrousels « en chiffres » de Pays d'Omer (slides.json → JPEG 1080x1080)",
+  "dependencies": {
+    "@fontsource/fraunces": "^5.1.0",
+    "@fontsource/public-sans": "^5.1.0",
+    "playwright": "^1.49.0"
+  }
+}
