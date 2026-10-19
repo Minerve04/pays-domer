@@ -1,30 +1,162 @@
 {
-  "rubrique": "Saint-Omer en chiffres",
-  "slides": [
-    {"type": "cover", "numero": "2", "serie": "Série · Le centre-ville", "titre": "Saint-Omer", "sousTitre": "en chiffres",
-     "teasers": [{"n": "513", "l": "locaux commerciaux"}, {"n": "114", "l": "vitrines vides"}, {"n": "1 126", "l": "logements vacants"}]},
-    {"type": "kpi", "fond": "papier", "surtitre": "Le commerce", "chiffre": "513", "unite": "locaux commerciaux",
-     "reperes": [{"n": "114", "l": "locaux vacants en 2025"}, {"n": "≈ 180 000", "l": "consommateurs dans la zone de chalandise"}],
-     "texte": "Le premier pôle commerçant de l'Audomarois. **Plus d'un local sur cinq cherche pourtant un preneur.**",
-     "source": "Sources : Agence d'urbanisme du Pays de Saint-Omer, portrait de commune 2025 · CAPSO"},
-    {"type": "bars", "surtitre": "La vacance commerciale", "chiffre": "≈ 22 %", "unite": "de locaux vacants", "sousUnite": "à Saint-Omer en 2025",
-     "barres": [{"l": "2015", "pct": 0.81, "v": "17,9 %"}, {"l": "2017", "pct": 0.81, "v": "17,9 %"}, {"l": "2025", "pct": 1, "v": "≈ 22 %", "fort": true}],
-     "texte": "Stable autour de 18 % avant le Covid, la vacance a grimpé depuis : **92 locaux vides en 2017, 114 en 2025.**",
-     "source": "Sources : Agence d'urbanisme du Pays de Saint-Omer, observatoire 2017 · portrait de commune 2025"},
-    {"type": "teal", "surtitre": "Les logements", "chiffre": "1 126", "unite": "logements vacants",
-     "accroche": "Un logement sur huit est vide à Saint-Omer, soit 13,2 % du parc.",
-     "reperes": [{"n": "1999", "l": "517 logements vacants, 7 % du parc"}, {"n": "2023", "l": "1 126 logements vacants, 13,2 % du parc"}],
-     "source": "Source : INSEE, recensements de la population 1999 et 2023"},
-    {"type": "stats", "surtitre": "Qui habite Saint-Omer", "chiffre": "65,6 %", "unite": "de locataires",
-     "stats": [{"n": "60,3 %", "l": "d'appartements"}, {"n": "32,8 %", "l": "de propriétaires"}, {"n": "8 550", "l": "logements"}, {"n": "14 382", "l": "habitants en 2023"}],
-     "texte": "Une ville de locataires et d'appartements. **Saint-Omer a perdu 400 habitants entre 2017 et 2023.**",
-     "source": "Source : INSEE, recensement de la population 2023"},
-    {"type": "cards", "surtitre": "La réponse publique",
-     "cartes": [{"kicker": "Action Cœur de Ville", "chiffre": "128", "unite": "logements à réhabiliter en cinq ans", "n2": "66", "l2": "en loyer social\nou intermédiaire"}, {"kicker": "Restauration immobilière", "chiffre": "≈ 30", "unite": "immeubles ciblés", "n2": "2024-2028", "l2": "nouvelle OPAH-RU\navec Aire-sur-la-Lys"}],
-     "texte": "Saint-Omer fait partie du programme national Action Cœur de Ville depuis 2018. **Objectif affiché : plus de logements locatifs dans le centre historique.**",
-     "source": "Sources : Programme Action Cœur de Ville du Pays de Saint-Omer (2018) · Anah · CAPSO"},
-    {"type": "sources", "titre": "Chaque chiffre\na une source.",
-     "sources": [{"n": "02", "t": "Agence d'urbanisme et de développement du Pays de Saint-Omer, portrait de commune Saint-Omer (septembre 2025) · CAPSO, Pôle implantation commerce"}, {"n": "03", "t": "Agence d'urbanisme du Pays de Saint-Omer, observatoire de la vacance commerciale 2017 · portrait de commune 2025"}, {"n": "04", "t": "INSEE, recensements de la population 1999 et 2023 — commune de Saint-Omer"}, {"n": "05", "t": "INSEE, recensement de la population 2023 — commune de Saint-Omer"}, {"n": "06", "t": "Programme Action Cœur de Ville du Pays de Saint-Omer (janvier 2018) · Anah, OPAH-RU cœur historique de Saint-Omer · CAPSO, OPAH-RU 2024-2028"}],
-     "prochain": "L'Audomarois en chiffres : l'eau"}
-  ]
+ "rubrique": "Saint-Omer en chiffres",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "2",
+   "serie": "Série · Le centre-ville",
+   "titre": "Saint-Omer",
+   "sousTitre": "en chiffres",
+   "teasers": [
+    {
+     "n": "513",
+     "l": "locaux commerciaux"
+    },
+    {
+     "n": "114",
+     "l": "vitrines vides"
+    },
+    {
+     "n": "1 126",
+     "l": "logements vacants"
+    }
+   ]
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Le commerce",
+   "chiffre": "513",
+   "unite": "locaux commerciaux",
+   "reperes": [
+    {
+     "n": "114",
+     "l": "locaux vacants en 2025"
+    },
+    {
+     "n": "≈ 180 000",
+     "l": "consommateurs dans la zone de chalandise"
+    }
+   ],
+   "texte": "Le premier pôle commerçant de l'Audomarois. **Plus d'un local sur cinq cherche pourtant un preneur.**",
+   "source": "Sources : Agence d'urbanisme du Pays de Saint-Omer, portrait de commune 2025 · CAPSO"
+  },
+  {
+   "type": "bars",
+   "surtitre": "La vacance commerciale",
+   "chiffre": "≈ 22 %",
+   "taille": 220,
+   "unite": "de locaux vacants",
+   "sousUnite": "à Saint-Omer en 2025",
+   "barres": [
+    {
+     "l": "2015",
+     "pct": 0.81,
+     "v": "17,9 %"
+    },
+    {
+     "l": "2017",
+     "pct": 0.81,
+     "v": "17,9 %"
+    },
+    {
+     "l": "2025",
+     "pct": 1,
+     "v": "≈ 22 %",
+     "fort": true
+    }
+   ],
+   "texte": "La vacance était stable autour de 18 % avant le Covid. **92 locaux vides en 2017, 114 en 2025.**",
+   "source": "Sources : Agence d'urbanisme du Pays de Saint-Omer, observatoire 2017 · portrait de commune 2025"
+  },
+  {
+   "type": "teal",
+   "surtitre": "Les logements",
+   "chiffre": "1 126",
+   "unite": "logements vacants",
+   "accroche": "Un logement sur huit est vide à Saint-Omer, soit 13,2 % du parc.",
+   "reperes": [
+    {
+     "n": "1999",
+     "l": "517 logements vides, 7 % du parc"
+    },
+    {
+     "n": "2023",
+     "l": "1 126 logements vides, 13,2 % du parc"
+    }
+   ],
+   "source": "Source : INSEE, recensements de la population 1999 et 2023"
+  },
+  {
+   "type": "stats",
+   "surtitre": "Qui habite Saint-Omer",
+   "chiffre": "65,6 %",
+   "unite": "de locataires",
+   "stats": [
+    {
+     "n": "60,3 %",
+     "l": "d'appartements"
+    },
+    {
+     "n": "32,8 %",
+     "l": "de propriétaires"
+    },
+    {
+     "n": "8 550",
+     "l": "logements en 2023"
+    }
+   ],
+   "texte": "Une ville de locataires et d'appartements. **14 382 habitants en 2023, soit 400 de moins qu'en 2017.**",
+   "source": "Source : INSEE, recensement de la population 2023"
+  },
+  {
+   "type": "cards",
+   "surtitre": "La réponse publique",
+   "cartes": [
+    {
+     "kicker": "Action Cœur de Ville",
+     "chiffre": "128",
+     "unite": "logements à réhabiliter",
+     "n2": "66",
+     "l2": "en loyer social\nou intermédiaire"
+    },
+    {
+     "kicker": "Restauration immobilière",
+     "chiffre": "≈ 30",
+     "unite": "immeubles ciblés",
+     "n2": "5 ans",
+     "l2": "nouvelle OPAH-RU\n2024-2028"
+    }
+   ],
+   "texte": "Saint-Omer fait partie du programme national Action Cœur de Ville depuis 2018. **Objectif affiché : plus de logements locatifs dans le centre historique.**",
+   "source": "Sources : Programme Action Cœur de Ville du Pays de Saint-Omer (2018) · Anah · CAPSO"
+  },
+  {
+   "type": "sources",
+   "titre": "Chaque chiffre\na une source.",
+   "sources": [
+    {
+     "n": "02",
+     "t": "Agence d'urbanisme du Pays de Saint-Omer, portrait de commune (septembre 2025) · CAPSO, Pôle implantation commerce"
+    },
+    {
+     "n": "03",
+     "t": "Agence d'urbanisme du Pays de Saint-Omer, observatoire de la vacance commerciale 2017 · portrait de commune 2025"
+    },
+    {
+     "n": "04",
+     "t": "INSEE, recensements de la population 1999 et 2023, commune de Saint-Omer"
+    },
+    {
+     "n": "05",
+     "t": "INSEE, recensement de la population 2023, commune de Saint-Omer"
+    },
+    {
+     "n": "06",
+     "t": "Programme Action Cœur de Ville du Pays de Saint-Omer (2018) · Anah · CAPSO, OPAH-RU 2024-2028"
+    }
+   ],
+   "prochain": "L'Audomarois en chiffres : l'eau"
+  }
+ ]
 }
