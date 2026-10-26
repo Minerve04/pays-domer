@@ -1,0 +1,165 @@
+{
+ "rubrique": "L'Audomarois en chiffres",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "3",
+   "serie": "Série · L'eau",
+   "titre": "L'Audomarois",
+   "sousTitre": "en chiffres",
+   "teasers": [
+    {
+     "n": "665",
+     "l": "km² de bassin versant"
+    },
+    {
+     "n": "60 %",
+     "l": "de l'eau potable exportée"
+    },
+    {
+     "n": "381",
+     "l": "mm de pluie en un mois"
+    }
+   ]
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Le bassin de l'Aa",
+   "chiffre": "665",
+   "unite": "km² de bassin versant",
+   "reperes": [
+    {
+     "n": "71",
+     "l": "communes dans le périmètre du SAGE de l'Audomarois"
+    },
+    {
+     "n": "≈ 97 000",
+     "l": "habitants sur le bassin"
+    }
+   ],
+   "texte": "L'Aa naît à Bourthes, à 121 mètres d'altitude, et coule sur **54 km** vers le nord-est. À Saint-Omer, elle n'est plus qu'à 14 mètres.",
+   "source": "Sources : SAGE de l'Audomarois, avis MRAe 2020 · CAPSO, L'agglo sur tous les fronts, 2024"
+  },
+  {
+   "type": "teal",
+   "surtitre": "L'eau potable",
+   "chiffre": "60 %",
+   "unite": "de l'eau prélevée part ailleurs",
+   "accroche": "Six litres sur dix pompés dans l'Audomarois alimentent les régions de Dunkerque et de Lille.",
+   "reperes": [
+    {
+     "n": "21 M m³",
+     "l": "par an, plafond de prélèvement fixé pour le Nord Audomarois"
+    },
+    {
+     "n": "13 M m³",
+     "l": "par an, plafond fixé pour le sous-bassin Aa aval"
+    }
+   ],
+   "source": "Source : SAGE de l'Audomarois, règlement révisé · avis MRAe Hauts-de-France, octobre 2020"
+  },
+  {
+   "type": "bars",
+   "surtitre": "La nappe de la craie",
+   "chiffre": "66 %",
+   "unite": "de la recharge prélevée",
+   "sousUnite": "sous-bassin Aa aval",
+   "barres": [
+    {
+     "l": "Craie, médiane",
+     "pct": 0.11,
+     "v": "7 %"
+    },
+    {
+     "l": "Nord Audomarois",
+     "pct": 0.82,
+     "v": "54 %"
+    },
+    {
+     "l": "Aa aval",
+     "pct": 1,
+     "v": "66 %",
+     "fort": true
+    }
+   ],
+   "texte": "La craie de l'Audomarois reste classée en bon état quantitatif. **Mais elle est bien plus sollicitée que le reste de la nappe.**",
+   "source": "Source : SAGE de l'Audomarois · avis MRAe Hauts-de-France, octobre 2020"
+  },
+  {
+   "type": "stats",
+   "surtitre": "Les crues de novembre 2023",
+   "chiffre": "381",
+   "unite": "mm de pluie\nà Saint-Omer",
+   "stats": [
+    {
+     "n": "6",
+     "l": "mois de pluie tombés du 15 octobre au 13 novembre"
+    },
+    {
+     "n": "200 ans",
+     "l": "période de retour des crues"
+    },
+    {
+     "n": "250",
+     "l": "habitations touchées dans l'agglomération"
+    },
+    {
+     "n": "200",
+     "l": "entreprises et commerces touchés"
+    }
+   ],
+   "texte": "L'Aa est sortie de son lit dès le 10 novembre. **Le marais se vide lentement : 2 mètres de dénivelé sur 30 km jusqu'à la mer.**",
+   "source": "Source : CAPSO, L'agglo sur tous les fronts, novembre 2023 – janvier 2024"
+  },
+  {
+   "type": "cards",
+   "surtitre": "Les wateringues",
+   "cartes": [
+    {
+     "kicker": "Pompage vers la mer",
+     "chiffre": "100",
+     "unite": "m³ par seconde de capacité",
+     "n2": "140 km",
+     "l2": "de canaux\nentretenus"
+    },
+    {
+     "kicker": "Hiver 2023-2024",
+     "chiffre": "400 M",
+     "unite": "de m³ pompés en 4 mois",
+     "n2": "× 4",
+     "l2": "le volume d'une\nannée moyenne"
+    }
+   ],
+   "texte": "Entre Saint-Omer, Calais et Dunkerque, 100 000 hectares gagnés sur la mer. **Le plus grand polder habité de France est sous le niveau de la marée haute.**",
+   "source": "Sources : Institution intercommunale des Wateringues, cahier d'acteurs, décembre 2024 · CAPSO"
+  },
+  {
+   "type": "sources",
+   "titre": "Chaque chiffre\na une source.",
+   "sources": [
+    {
+     "n": "02",
+     "t": "MRAe Hauts-de-France, avis 2020 sur le SAGE de l'Audomarois · CAPSO, 2024"
+    },
+    {
+     "n": "03",
+     "t": "SAGE de l'Audomarois, règlement révisé · avis MRAe n° 2020-4706"
+    },
+    {
+     "n": "04",
+     "t": "SAGE de l'Audomarois · avis MRAe n° 2020-4706, taux de prélèvement"
+    },
+    {
+     "n": "05",
+     "t": "CAPSO, « L'agglo sur tous les fronts », novembre 2023 – janvier 2024"
+    },
+    {
+     "n": "06",
+     "t": "Institution intercommunale des Wateringues, cahier d'acteurs, déc. 2024"
+    }
+   ],
+   "prochain": "Saint-Omer en chiffres : 1914-1918"
+  }
+ ]
+}
