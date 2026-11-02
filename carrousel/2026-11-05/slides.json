@@ -1,0 +1,91 @@
+{
+ "rubrique": "Saint-Omer en chiffres",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "4",
+   "serie": "Série · 1914-1918",
+   "titre": "Saint-Omer",
+   "sousTitre": "en chiffres",
+   "teasers": [
+    {"n": "17", "l": "mois de quartier général"},
+    {"n": "43", "l": "escadrilles"},
+    {"n": "2 874", "l": "tombes du Commonwealth"}
+   ]
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Le quartier général britannique",
+   "chiffre": "17",
+   "unite": "mois de QG britannique",
+   "reperes": [
+    {"n": "13 oct. 1914", "l": "le GHQ s'installe au collège Saint-Bertin"},
+    {"n": "30 mars 1916", "l": "départ pour Montreuil-sur-Mer"}
+   ],
+   "texte": "Toute l'armée britannique en France se commande depuis Saint-Omer. **Lord Roberts, ancien chef de cette armée, y meurt en novembre 1914.**",
+   "source": "Sources : CWGC · The Long, Long Trail, chronologie du GHQ"
+  },
+  {
+   "type": "teal",
+   "surtitre": "L'aérodrome",
+   "chiffre": "43",
+   "unite": "escadrilles passées par Saint-Omer",
+   "accroche": "Le quartier général du Royal Flying Corps s'installe près de l'hippodrome le 8 octobre 1914.",
+   "reperes": [
+    {"n": "≈ 1 000", "l": "techniciens au dépôt d'aviation nº 1 en décembre 1915"},
+    {"n": "+ 4 300", "l": "techniciens en mars 1918, près de 10 % du RFC en France"}
+   ],
+   "source": "Source : The Great War Aviation Society, « The RFC at Saint-Omer », P. R. Hare"
+  },
+  {
+   "type": "stats",
+   "surtitre": "Les hôpitaux",
+   "chiffre": "12",
+   "unite": "unités\nhospitalières",
+   "stats": [
+    {"n": "5", "l": "hôpitaux stationnaires, dont canadiens et néo-zélandais"},
+    {"n": "3", "l": "hôpitaux généraux, dont le 58e écossais"},
+    {"n": "4", "l": "postes d'évacuation australiens"},
+    {"n": "1914", "l": "ouverture du No 10 Stationary à l'école Saint-Joseph"}
+   ],
+   "texte": "Saint-Omer soigne l'arrière du front de Flandre. **Le No 10 Stationary Hospital reste ouvert d'octobre 1914 à mai 1918.**",
+   "source": "Sources : CWGC · The Long, Long Trail, hôpitaux de Saint-Omer"
+  },
+  {
+   "type": "cards",
+   "surtitre": "Les bombardements",
+   "cartes": [
+    {"kicker": "Nuit du 29 au 30 septembre 1917", "chiffre": "60", "unite": "bombes sur la ville et ses hôpitaux", "n2": "30", "l2": "morts, dont\n4 infirmières"},
+    {"kicker": "Nuit du 2 au 3 septembre 1917", "chiffre": "5", "unite": "bombes, dont 3 près d'un hôpital", "n2": "3", "l2": "civils tués,\n8 blessés"}
+   ],
+   "texte": "Les avions allemands visent la ville-garnison et ses hôpitaux. **Le 23 mai 1918, le No 10 Stationary Hospital est presque entièrement détruit.**",
+   "source": "Sources : The Long, Long Trail, journaux de marche de septembre 1917 · CWGC"
+  },
+  {
+   "type": "kpi",
+   "fond": "marine",
+   "surtitre": "Le cimetière du Souvenir, Longuenesse",
+   "chiffre": "2 874",
+   "unite": "tombes de 1914-1918",
+   "reperes": [
+    {"n": "239", "l": "tombes de soldats d'autres nationalités"},
+    {"n": "403", "l": "tombes de la Seconde Guerre mondiale"}
+   ],
+   "texte": "Un cimetière du Commonwealth dessiné par Sir Herbert Baker. **23 travailleurs du Chinese Labour Corps y sont commémorés par des stèles.**",
+   "source": "Source : CWGC, Longuenesse (St. Omer) Souvenir Cemetery"
+  },
+  {
+   "type": "sources",
+   "titre": "Chaque chiffre\na une source.",
+   "sources": [
+    {"n": "02", "t": "Commonwealth War Graves Commission (CWGC) · The Long, Long Trail, chronologie du GHQ de la BEF"},
+    {"n": "03", "t": "The Great War Aviation Society, « The RFC at Saint-Omer », Paul R. Hare"},
+    {"n": "04", "t": "CWGC, historique du cimetière de Longuenesse · The Long, Long Trail, hôpitaux britanniques de Saint-Omer"},
+    {"n": "05", "t": "The Long, Long Trail, « Deadly air raids on Saint-Omer in September 1917 », journaux de marche RAMC · CWGC"},
+    {"n": "06", "t": "CWGC, Longuenesse (St. Omer) Souvenir Cemetery, registre des sépultures"}
+   ],
+   "prochain": "L'Audomarois en chiffres : l'emploi"
+  }
+ ]
+}
