@@ -20,7 +20,7 @@
    "chiffre": "17",
    "unite": "mois de QG britannique",
    "reperes": [
-    {"n": "13 oct. 1914", "l": "le GHQ s'installe au collège Saint-Bertin"},
+    {"n": "13 oct. 1914", "l": "arrivée du GHQ au collège Saint-Bertin"},
     {"n": "30 mars 1916", "l": "départ pour Montreuil-sur-Mer"}
    ],
    "texte": "Toute l'armée britannique en France se commande depuis Saint-Omer. **Lord Roberts, ancien chef de cette armée, y meurt en novembre 1914.**",
@@ -30,7 +30,7 @@
    "type": "teal",
    "surtitre": "L'aérodrome",
    "chiffre": "43",
-   "unite": "escadrilles passées par Saint-Omer",
+   "unite": "escadrilles en quatre ans",
    "accroche": "Le quartier général du Royal Flying Corps s'installe près de l'hippodrome le 8 octobre 1914.",
    "reperes": [
     {"n": "≈ 1 000", "l": "techniciens au dépôt d'aviation nº 1 en décembre 1915"},
@@ -67,7 +67,8 @@
    "fond": "marine",
    "surtitre": "Le cimetière du Souvenir, Longuenesse",
    "chiffre": "2 874",
-   "unite": "tombes de 1914-1918",
+   "taille": 220,
+   "unite": "tombes de 14-18",
    "reperes": [
     {"n": "239", "l": "tombes de soldats d'autres nationalités"},
     {"n": "403", "l": "tombes de la Seconde Guerre mondiale"}
