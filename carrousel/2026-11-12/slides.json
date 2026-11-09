@@ -1,0 +1,96 @@
+{
+ "rubrique": "L'Audomarois en chiffres",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "5",
+   "serie": "Série · L'emploi",
+   "titre": "L'Audomarois",
+   "sousTitre": "en chiffres",
+   "teasers": [
+    {"n": "48 400", "l": "emplois"},
+    {"n": "1 sur 5", "l": "dans l'industrie"},
+    {"n": "3 700", "l": "salariés chez Arc"}
+   ]
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Les emplois de l'arrondissement",
+   "chiffre": "48 400",
+   "unite": "emplois en 2022",
+   "reperes": [
+    {"n": "51 600", "l": "actifs occupés qui habitent le territoire"},
+    {"n": "71 %", "l": "des emplois dans les services, contre 80 % en région"}
+   ],
+   "texte": "L'arrondissement de Saint-Omer compte 89 communes et 128 300 habitants. **Un emploi sur cinq est industriel, contre un sur huit dans le Pas-de-Calais.**",
+   "source": "Source : Insee Flash Hauts-de-France nº 181, juillet 2026 · recensement 2022"
+  },
+  {
+   "type": "teal",
+   "surtitre": "L'industrie",
+   "chiffre": "+9 600",
+   "unite": "emplois industriels",
+   "accroche": "Le territoire le plus industrialisé du Pas-de-Calais, le quatrième des Hauts-de-France.",
+   "reperes": [
+    {"n": "4 200", "l": "emplois dans la fabrication de verre et d'articles en verre (2024)"},
+    {"n": "≈ 1 700", "l": "emplois dans le papier et le carton : 1 200 articles, plus de 500 pâte et papier"}
+   ],
+   "source": "Source : Insee Flash Hauts-de-France nº 181, juillet 2026"
+  },
+  {
+   "type": "stats",
+   "surtitre": "Les filières de l'agglomération",
+   "chiffre": "2 805",
+   "unite": "établissements\nemployeurs",
+   "stats": [
+    {"n": "4 800", "l": "salariés du verre"},
+    {"n": "1 500", "l": "salariés du papier-carton"},
+    {"n": "1 150", "l": "salariés de l'agroalimentaire"},
+    {"n": "12 000", "l": "salariés dans les 18 zones d'activité"}
+   ],
+   "texte": "Périmètre CAPSO, 53 communes, 41 473 emplois. **Huit établissements seulement dépassent 250 salariés.**",
+   "source": "Source : CAPSO, séminaire économie, juin 2023 · Insee Flores 2020"
+  },
+  {
+   "type": "kpi",
+   "fond": "marine",
+   "surtitre": "Arc France, premier employeur",
+   "chiffre": "3 501",
+   "unite": "salariés à Arques début 2026",
+   "reperes": [
+    {"n": "721", "l": "postes supprimés par le plan social signé le 9 mars 2026"},
+    {"n": "40 %", "l": "des emplois industriels de l'arrondissement en 2024"}
+   ],
+   "texte": "Placée en redressement judiciaire le 7 janvier 2026, la verrerie est cédée le 20 mars. **Le site pèse 22 % des emplois français du verre creux.**",
+   "source": "Sources : Insee Flash nº 181 · réponse ministérielle, JO du 26 mai 2026"
+  },
+  {
+   "type": "bars",
+   "surtitre": "Le chômage",
+   "chiffre": "8,1 %",
+   "unite": "de chômage fin 2025",
+   "sousUnite": "zone d'emploi de Saint-Omer",
+   "barres": [
+    {"l": "Saint-Omer", "pct": 0.84, "v": "8,1 %", "fort": true},
+    {"l": "Pas-de-Calais", "pct": 0.94, "v": "9,0 %"},
+    {"l": "Hauts-de-France", "pct": 1, "v": "9,6 %"},
+    {"l": "France", "pct": 0.82, "v": "7,9 %"}
+   ],
+   "texte": "Le chômage remonte de 0,7 point en un an dans l'Audomarois. **Il reste sous la moyenne du département et de la région.**",
+   "source": "Source : Insee Flash Hauts-de-France nº 183, juillet 2026 · taux localisés, 4e trimestre 2025"
+  },
+  {
+   "type": "sources",
+   "titre": "Chaque chiffre\na une source.",
+   "sources": [
+    {"n": "02", "t": "Insee Flash Hauts-de-France nº 181, « L'arrondissement de Saint-Omer, entre nature et spécialisation industrielle », juillet 2026 · recensement 2022"},
+    {"n": "03", "t": "Insee Flash Hauts-de-France nº 181, emplois par activité en 2024 · Insee Flores"},
+    {"n": "04", "t": "Communauté d'agglomération du Pays de Saint-Omer, séminaire économie du 22 juin 2023 · Insee Flores 2020, RP 2019"},
+    {"n": "05", "t": "Insee Flash nº 181 · Assemblée nationale, réponse à la question écrite nº 13315, JO du 26 mai 2026"},
+    {"n": "06", "t": "Insee Flash Hauts-de-France nº 183, « Hausse historique du chômage en 2025 », taux de chômage localisés par zone d'emploi, 4e trimestre 2025"}
+   ],
+   "prochain": "Saint-Omer en chiffres : le patrimoine"
+  }
+ ]
+}
