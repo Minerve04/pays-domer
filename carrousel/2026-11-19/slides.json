@@ -36,7 +36,7 @@
     {"n": "1840", "l": "La cathédrale, classée dès la première liste des monuments historiques"},
     {"n": "1975", "l": "L'intra-muros devient site inscrit, avant le secteur sauvegardé de 2016"}
    ],
-   "source": "Sources : CAPSO, plaquette du SPR · Association de la cathédrale, Patrimoine architectural audomarois"
+   "source": "Sources : CAPSO, plaquette du SPR · Association de la cathédrale de Saint-Omer"
   },
   {
    "type": "kpi",
@@ -70,7 +70,7 @@
    "type": "cards",
    "surtitre": "Les labels du ministère de la Culture",
    "cartes": [
-    {"kicker": "Ville d'art et d'histoire", "chiffre": "1997", "unite": "année du label pour Saint-Omer", "n2": "+ 200", "l2": "territoires labellisés\nen France"},
+    {"kicker": "Ville d'art et d'histoire", "chiffre": "1997", "unite": "année du label pour Saint-Omer", "n2": "+200", "l2": "territoires labellisés\nen France"},
     {"kicker": "Pays d'art et d'histoire", "chiffre": "53", "unite": "communes labellisées en 2026", "n2": "32", "l2": "communes au label\nde 2014"}
    ],
    "texte": "Le label Pays d'art et d'histoire s'étend en 2026 à toute l'agglomération. **Vers 1300, Saint-Omer était la dixième ville d'Occident par sa population.**",
@@ -82,7 +82,7 @@
    "sources": [
     {"n": "02", "t": "Communauté d'agglomération du Pays de Saint-Omer, « Site patrimonial remarquable de Saint-Omer, tout comprendre en 8 questions » · AUD, focus « Le plan de sauvegarde et de mise en valeur », novembre 2024"},
     {"n": "03", "t": "CAPSO, plaquette du site patrimonial remarquable (9 classés, 17 inscrits) · Association de la cathédrale, « Patrimoine architectural audomarois »"},
-    {"n": "04", "t": "Association de la cathédrale Notre-Dame de Saint-Omer, cathedrale-saint-omer.com : pages édifice, horloge, orgue · brochure « Patrimoine architectural audomarois »"},
+    {"n": "04", "t": "Association de la cathédrale Notre-Dame de Saint-Omer, cathedrale-saint-omer.com (édifice, horloge, orgue) · brochure « Patrimoine architectural audomarois »"},
     {"n": "05", "t": "Office de tourisme du Pays de Saint-Omer, « Un First Folio de Shakespeare à Saint-Omer » · Bibliothèque d'agglomération du Pays de Saint-Omer, bibliothèque numérique"},
     {"n": "06", "t": "Agence d'urbanisme et de développement du Pays de Saint-Omer, « Pays d'art et d'histoire », page mise à jour en 2026 · focus PSMV, 2024"}
    ],
