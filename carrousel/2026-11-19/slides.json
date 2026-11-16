@@ -1,0 +1,92 @@
+{
+ "rubrique": "Saint-Omer en chiffres",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "6",
+   "serie": "Série · Le patrimoine",
+   "titre": "Saint-Omer",
+   "sousTitre": "en chiffres",
+   "teasers": [
+    {"n": "112", "l": "hectares protégés"},
+    {"n": "26", "l": "monuments historiques"},
+    {"n": "800", "l": "manuscrits anciens"}
+   ]
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Le site patrimonial remarquable",
+   "chiffre": "112",
+   "unite": "hectares protégés",
+   "reperes": [
+    {"n": "2 852", "l": "parcelles dans le périmètre"},
+    {"n": "6 600", "l": "locaux cadastraux"}
+   ],
+   "texte": "Secteur sauvegardé créé le 28 juin 2016, l'un des cinq des Hauts-de-France avec Lille, Laon, Senlis et Mers-les-Bains. **Le jardin public en occupe 20,7 hectares.**",
+   "source": "Sources : CAPSO, plaquette du SPR · AUD, focus PSMV 2024"
+  },
+  {
+   "type": "teal",
+   "surtitre": "Les monuments historiques",
+   "chiffre": "26",
+   "unite": "arrêtés de protection",
+   "accroche": "Neuf édifices classés et dix-sept inscrits, dans le seul périmètre du site patrimonial remarquable.",
+   "reperes": [
+    {"n": "1840", "l": "La cathédrale, classée dès la première liste des monuments historiques"},
+    {"n": "1975", "l": "L'intra-muros devient site inscrit, avant le secteur sauvegardé de 2016"}
+   ],
+   "source": "Sources : CAPSO, plaquette du SPR · Association de la cathédrale, Patrimoine architectural audomarois"
+  },
+  {
+   "type": "kpi",
+   "fond": "marine",
+   "surtitre": "La cathédrale Notre-Dame",
+   "chiffre": "50 m",
+   "unite": "de tour occidentale",
+   "reperes": [
+    {"n": "1555-1559", "l": "horloge astrolabe de Pierre Enguerran, cadran de 2,10 m"},
+    {"n": "3 294", "l": "tuyaux des grandes orgues, buffet de 1717, Cavaillé-Coll en 1855"}
+   ],
+   "texte": "Un chantier gothique de la fin du XIIe siècle à 1521, pour 105 mètres de long. **Classée monument historique en 1840, basilique depuis 1879.**",
+   "source": "Source : Association de la cathédrale Notre-Dame de Saint-Omer",
+   "taille": 220
+  },
+  {
+   "type": "stats",
+   "surtitre": "La bibliothèque d'agglomération",
+   "chiffre": "800",
+   "unite": "manuscrits\nanciens",
+   "stats": [
+    {"n": "230", "l": "incunables, imprimés avant 1501"},
+    {"n": "1455", "l": "Bible de Gutenberg, vers 1454-1455"},
+    {"n": "1623", "l": "First Folio de Shakespeare"},
+    {"n": "2e", "l": "exemplaire en France, 233e au monde"}
+   ],
+   "texte": "Le First Folio est identifié en 2014 dans les rayons de l'ancien collège des Jésuites. **Un trésor que seules deux bibliothèques françaises possèdent.**",
+   "source": "Sources : Office de tourisme du Pays de Saint-Omer · BAPSO, bibliothèque numérique"
+  },
+  {
+   "type": "cards",
+   "surtitre": "Les labels du ministère de la Culture",
+   "cartes": [
+    {"kicker": "Ville d'art et d'histoire", "chiffre": "1997", "unite": "année du label pour Saint-Omer", "n2": "+ 200", "l2": "territoires labellisés\nen France"},
+    {"kicker": "Pays d'art et d'histoire", "chiffre": "53", "unite": "communes labellisées en 2026", "n2": "32", "l2": "communes au label\nde 2014"}
+   ],
+   "texte": "Le label Pays d'art et d'histoire s'étend en 2026 à toute l'agglomération. **Vers 1300, Saint-Omer était la dixième ville d'Occident par sa population.**",
+   "source": "Sources : Agence d'urbanisme du Pays de Saint-Omer (AUD), 2026 · focus PSMV 2024"
+  },
+  {
+   "type": "sources",
+   "titre": "Chaque chiffre\na une source.",
+   "sources": [
+    {"n": "02", "t": "Communauté d'agglomération du Pays de Saint-Omer, « Site patrimonial remarquable de Saint-Omer, tout comprendre en 8 questions » · AUD, focus « Le plan de sauvegarde et de mise en valeur », novembre 2024"},
+    {"n": "03", "t": "CAPSO, plaquette du site patrimonial remarquable (9 classés, 17 inscrits) · Association de la cathédrale, « Patrimoine architectural audomarois »"},
+    {"n": "04", "t": "Association de la cathédrale Notre-Dame de Saint-Omer, cathedrale-saint-omer.com : pages édifice, horloge, orgue · brochure « Patrimoine architectural audomarois »"},
+    {"n": "05", "t": "Office de tourisme du Pays de Saint-Omer, « Un First Folio de Shakespeare à Saint-Omer » · Bibliothèque d'agglomération du Pays de Saint-Omer, bibliothèque numérique"},
+    {"n": "06", "t": "Agence d'urbanisme et de développement du Pays de Saint-Omer, « Pays d'art et d'histoire », page mise à jour en 2026 · focus PSMV, 2024"}
+   ],
+   "prochain": "L'Audomarois en chiffres : le tourisme"
+  }
+ ]
+}
