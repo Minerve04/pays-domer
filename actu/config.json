@@ -1,7 +1,7 @@
 {
  "_lisezmoi": "Réglages et consignes de la machine « actualité locale » de Pays d'Omer (scénario Make 8237576), lus à chaque exécution. mode : publier ou brouillon (brouillon = e-mail seulement, rien n'est publié). forcer_creneau : vide en temps normal ; matin, midi ou soir pour un test.",
- "mode": "brouillon",
- "forcer_creneau": "soir",
+ "mode": "publier",
+ "forcer_creneau": "",
  "q1": "\"Saint-Omer\" OR Audomarois OR Arques OR Longuenesse OR Blendecques OR Wizernes OR Lumbres OR \"Aire-sur-la-Lys\" OR Helfaut OR Clairmarais OR Thérouanne OR Fauquembergues OR Tilques OR Éperlecques when:2d",
  "q2": "(site:deltafm.fr OR site:lavoixdunord.fr OR site:actu.fr OR site:nordlittoral.fr OR site:lechodelalys.fr OR site:francebleu.fr OR site:france3-regions.franceinfo.fr) (\"Saint-Omer\" OR Audomarois OR Arques OR Longuenesse OR Lumbres OR \"Aire-sur-la-Lys\" OR Blendecques OR Wizernes) when:3d",
  "q3_matin": "(\"Saint-Omer\" OR Audomarois OR Arques OR Longuenesse OR Lumbres OR \"Aire-sur-la-Lys\" OR Blendecques OR Wizernes) (travaux OR circulation OR fermeture OR grève OR vigilance OR coupure OR déviation OR crue OR ouverture) when:2d",
