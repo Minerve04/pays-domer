@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La lettre de l'Audomarois — Pays d'Omer</title>
+<meta name="description" content="Chaque vendredi, gratuitement : les sorties du week-end et les rendez-vous de la semaine dans l'Audomarois.">
+<meta property="og:title" content="La lettre de l'Audomarois — Pays d'Omer">
+<meta property="og:description" content="Chaque vendredi, gratuitement : les sorties du week-end et les rendez-vous de la semaine dans l'Audomarois.">
+<meta property="og:type" content="website">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#122E26">
+<style>
+  :root{--marine:#14263A;--blanc:#FBFBF9;--sarcelle:#2F6E78;--gris:#5D6B72;--filet:#E0E4E2}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--blanc);color:var(--marine);font-family:"Liberation Sans",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:760px;margin:0 auto;padding:32px 20px 64px}
+  header{text-align:center;padding-bottom:18px}
+  .logotype{font-family:"Liberation Serif",Georgia,"Times New Roman",serif;font-size:34px;font-weight:700;letter-spacing:.5px}
+  .filet-marque{width:64px;height:2px;background:var(--sarcelle);margin:10px auto 8px}
+  .signature{font-size:10.5px;letter-spacing:3px;color:var(--gris);text-transform:uppercase}
+  .topnav{display:flex;justify-content:center;gap:6px 22px;flex-wrap:wrap;margin:18px 0 0}
+  .topnav a{color:var(--gris);text-decoration:none;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;padding:4px 2px;border-bottom:2px solid transparent}
+  .topnav a:hover{color:var(--sarcelle)}
+  .topnav a.active{color:var(--marine);border-bottom-color:var(--sarcelle)}
+  .filet-eau{margin:26px 0;height:5px;position:relative}
+  .filet-eau::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--marine)}
+  .filet-eau::after{content:"";position:absolute;top:4px;left:0;right:0;height:1px;background:var(--filet)}
+  .hero{text-align:center;margin:8px 0 34px}
+  .hero h1{font-family:"Liberation Serif",Georgia,serif;font-size:36px;line-height:1.2;margin-bottom:12px}
+  .hero p{color:var(--gris);font-size:17px;max-width:540px;margin:0 auto}
+  .modules{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px}
+  .module{border:1px solid var(--filet);border-top:2px solid var(--sarcelle);padding:22px;display:block;text-decoration:none;color:var(--marine);transition:border-color .15s}
+  .module:hover{border-color:var(--sarcelle)}
+  .module .m-kicker{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px}
+  .module h2{font-family:"Liberation Serif",Georgia,serif;font-size:22px;margin-bottom:8px}
+  .module p{color:var(--gris);font-size:14.5px}
+  .module .m-lien{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:2px;text-transform:uppercase;font-weight:700;color:var(--sarcelle)}
+  .nl-box{margin:38px auto 0;max-width:520px;padding:26px 26px 20px;border:1px solid var(--filet);border-top:2px solid var(--sarcelle);text-align:center}
+  .nl-kicker{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--sarcelle);font-weight:700;margin-bottom:8px}
+  .nl-titre{font-family:"Liberation Serif",Georgia,serif;font-size:24px;margin-bottom:8px}
+  .nl-text{font-size:15px;color:var(--gris);margin-bottom:18px}
+  .nl-form{display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto}
+  .nl-form input{border:1px solid var(--filet);padding:13px 14px;font-size:15px;font-family:inherit;color:var(--marine);background:transparent;outline:none}
+  .nl-form input:focus{border-color:var(--sarcelle)}
+  .nl-form button{background:var(--marine);color:var(--blanc);border:none;cursor:pointer;font-family:inherit;font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:14px}
+  .nl-form button:hover{background:var(--sarcelle)}
+  .nl-rgpd{font-size:11.5px;color:var(--gris);margin-top:12px;opacity:.85}
+  .nl-merci{font-size:14px;color:var(--sarcelle);font-weight:700;display:none;padding:10px 0}
+  footer{margin-top:44px;text-align:center}
+  footer .fnav{margin-top:12px;font-size:12px}
+  footer .fnav a{color:var(--gris);text-decoration:none;margin:0 8px}
+  footer .fnav a:hover{color:var(--sarcelle)}
+  @media(max-width:560px){.modules{grid-template-columns:1fr}.hero h1{font-size:29px}}
+  .nl-box{margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logotype">Pays d&rsquo;Omer</div>
+    <div class="filet-marque"></div>
+    <div class="signature">La lettre de l&rsquo;Audomarois</div>
+    <nav class="topnav">
+      <a href="/">Accueil</a>
+      <a href="/agenda.html">Agenda</a>
+      <a href="/aa_en_direct.html">L&rsquo;Aa en direct</a>
+      <a href="/services.html">Services</a>
+      <a href="/radar.html">Radar</a>
+      <a href="/blog.html">Journal</a>
+      <a href="/quiz.html">Quiz</a>
+    </nav>
+  </header>
+  <div class="filet-eau"></div>
+  <div class="nl-box" id="nl-box">
+    <div class="nl-kicker">Chaque vendredi, gratuit</div>
+    <div class="nl-titre">La lettre de l&rsquo;Audomarois</div>
+    <p class="nl-text">Chaque vendredi matin, dans votre boîte mail : les sorties du week-end et les rendez-vous de la semaine dans l&rsquo;Audomarois.</p>
+    <form class="nl-form" onsubmit="submitEmail(event)">
+      <input type="email" id="nl-email" placeholder="votre@email.fr" required>
+      <button type="submit" id="nl-btn">Je m&rsquo;abonne</button>
+    </form>
+    <p class="nl-rgpd">Votre adresse ne sert qu&rsquo;à l&rsquo;envoi de la lettre. Jamais partagée, désinscription en un clic dans chaque envoi.</p>
+  </div>
+  <p class="nl-merci" id="nl-merci" style="text-align:center">C&rsquo;est noté : première lettre vendredi matin.</p>
+  <footer>
+    <div class="filet-eau"></div>
+    <div class="signature">Pays d&rsquo;Omer &middot; La lettre de l&rsquo;Audomarois</div>
+    <div class="fnav">
+      <a href="/agenda.html">Agenda</a> ·
+      <a href="/aa_en_direct.html">L&rsquo;Aa en direct</a> ·
+      <a href="/services.html">Gardes &amp; services</a> ·
+      <a href="/quiz.html">Quiz</a> ·
+      <a href="/mentions-legales.html">Mentions légales</a>
+    </div>
+  </footer>
+</div>
+<script>
+const WEBHOOK = "https://hook.eu1.make.com/b01dyy5stb8wdq8k6syxxv1m9y7sn3to";
+function submitEmail(ev){
+  ev.preventDefault();
+  const email = document.getElementById("nl-email").value.trim();
+  if(!email) return;
+  const btn = document.getElementById("nl-btn");
+  btn.disabled = true; btn.textContent = "Envoi…";
+  const src = new URLSearchParams(location.search).get("utm_source") || "lettre";
+  const body = new URLSearchParams({email:email, score:"", titre:"", source:"lettre-"+src});
+  fetch(WEBHOOK,{method:"POST",body:body,mode:"no-cors"}).finally(()=>{
+    document.getElementById("nl-box").style.display="none";
+    document.getElementById("nl-merci").style.display="block";
+  });
+}
+</script>
+</body>
+</html>
