@@ -124,6 +124,7 @@ L'ESSENTIEL DU MATIN · <la « date pour le titre » donnée plus haut, en capit
 Laquelle vous concerne le plus ?
 (ligne vide)
 Chaque matin à 7 h 30, l'essentiel de l'Audomarois : paysdomer.fr
+Et chaque vendredi, la lettre des sorties du week-end : paysdomer.fr/lettre
 #SaintOmer #Audomarois #PaysdOmer
 Chaque ligne numérotée a la forme « COMMUNE — le fait en une phrase (Média) » et fait moins de 150 caractères. Tu reprends le « bref » du candidat sans en changer le sens ni rien y ajouter : tu peux seulement le raccourcir, supprimer un mot de commentaire ou remplacer une périphrase par le nom donné dans le post. N'y mets pas un article qui n'est qu'une sélection d'un autre média. Une alerte en cours (crue, inondation, tempête) est toujours placée en nº 1, racontée au passé et datée, sans niveau de vigilance.
 Pour cette édition : « sujet » = « L'essentiel du matin du » suivi de la date pour le titre ; « categorie » = « essentiel » ; « n » = numéro du candidat placé en premier ; « source_nom » = les médias cités séparés par des virgules ; « source_url » = chaîne vide ; « lieu » et « lieu_photo » = chaînes vides ; « sujets_essentiel » = « ESSENTIEL DU » suivi de la date du jour au format JJ/MM/AAAA, puis « : », puis les « sujet » des candidats retenus séparés par des points-virgules.

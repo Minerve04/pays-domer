@@ -54,7 +54,10 @@ function cloture() {
 
 const pad = (n) => String(n).padStart(2, "0");
 const reponse = (c, n) => `Réponse de la case ${n} : ${c.r}, ${c.rep}. ${c.exp}\nSource : ${c.src}.`;
-function texte(n) {
+const LETTRE = "\nLa lettre du vendredi (sorties du week-end, rendez-vous de la semaine), gratuite : paysdomer.fr/lettre";
+const AVEC_LETTRE = new Set([1, 3, 10, 17, 24, 25]);
+function texte(n) { return texteBase(n).replace("\n#SaintOmer", (AVEC_LETTRE.has(n) ? LETTRE : "") + "\n#SaintOmer"); }
+function texteBase(n) {
   if (n === 25) return `CALENDRIER DE L'AVENT DE L'AUDOMAROIS · JOYEUX NOËL\n\n${reponse(cases[23], 24)}\n\n24 cases, 24 chiffres sur l'Audomarois, tous sourcés. Merci d'avoir joué.\n\nLequel vous a le plus surpris ?\n\nL'Audomarois en chiffres revient chaque jeudi : paysdomer.fr\n#SaintOmer #Audomarois #PaysdOmer`;
   const c = cases[n - 1];
   const hier = n > 1 ? `\n\n${reponse(cases[n - 2], n - 1)}` : `\n\nJusqu'au 24 décembre, chaque soir à 19 h : un chiffre de l'Audomarois à deviner, et la réponse le lendemain.`;
