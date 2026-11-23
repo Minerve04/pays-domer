@@ -1,0 +1,58 @@
+name: Actu — rendu des visuels
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "actu/rendu/*.txt"
+      - "carrousel/_tools/render-actu.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: actu-rendu
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Fichiers à rendre
+        id: files
+        run: |
+          LIST=""
+          for f in actu/rendu/*.txt; do
+            [ -e "$f" ] || continue
+            [ -e "${f%.txt}.jpg" ] || LIST="$LIST $f"
+          done
+          echo "list=$LIST" >> "$GITHUB_OUTPUT"
+
+      - name: Dépendances
+        if: steps.files.outputs.list != ''
+        working-directory: carrousel/_tools
+        run: |
+          npm install --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Rendu
+        if: steps.files.outputs.list != ''
+        run: node carrousel/_tools/render-actu.mjs ${{ steps.files.outputs.list }}
+
+      - name: Commit des images
+        if: steps.files.outputs.list != ''
+        run: |
+          git config user.name "paysdomer-bot"
+          git config user.email "bot@paysdomer.fr"
+          git add actu/rendu/*.jpg
+          git diff --cached --quiet && echo "Rien à committer" && exit 0
+          git commit -m "Actu : rendu des visuels"
+          for i in 1 2 3; do git pull --rebase -q && git push && exit 0; sleep 5; done
+          exit 1
