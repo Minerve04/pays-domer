@@ -1,6 +1,0 @@
-creneau: matin
-categorie: 
-date: lundi 23 novembre
-titre: 
-chapo: 
----
