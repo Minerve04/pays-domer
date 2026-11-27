@@ -1,0 +1,94 @@
+{
+ "rubrique": "Les commerces de l'Audomarois",
+ "slides": [
+  {
+   "type": "cover",
+   "numero": "HS",
+   "serie": "Hors-série · Les commerces",
+   "kicker": "La nouvelle carte interactive de Pays d'Omer",
+   "titre": "Nos commerces",
+   "sousTitre": "en rosace",
+   "teasers": [
+    {"n": "843", "l": "commerces recensés"},
+    {"n": "38", "l": "communes représentées"},
+    {"n": "151", "l": "enseignes avec leur logo"}
+   ]
+  },
+  {
+   "type": "image",
+   "surtitre": "La rosace des commerces",
+   "titre": "7 secteurs, 31 domaines, un point par commerce",
+   "image": "rosace.png",
+   "taille": 640,
+   "source": "Source : OpenStreetMap (ODbL) via la Base nationale des commerces ouverte, extraction du 27 novembre 2026"
+  },
+  {
+   "type": "bars",
+   "surtitre": "Où sont les commerces ?",
+   "chiffre": "268",
+   "unite": "commerces",
+   "sousUnite": "à Saint-Omer, près d'un sur trois",
+   "largeurLabel": 270,
+   "barres": [
+    {"l": "Saint-Omer", "v": "268", "pct": 1, "fort": true},
+    {"l": "Aire-sur-la-Lys", "v": "167", "pct": 0.62},
+    {"l": "Longuenesse", "v": "99", "pct": 0.37},
+    {"l": "Arques", "v": "87", "pct": 0.32},
+    {"l": "Saint-Martin-lez-T.", "v": "40", "pct": 0.15}
+   ],
+   "texte": "Cinq communes rassemblent **près de huit commerces recensés sur dix**.",
+   "source": "Source : OpenStreetMap via la BNCO · 843 commerces nommés",
+   "taille": 220
+  },
+  {
+   "type": "stats",
+   "surtitre": "Le premier secteur",
+   "chiffre": "181",
+   "unite": "cafés, bars\net restaurants",
+   "stats": [
+    {"n": "75", "l": "restaurants"},
+    {"n": "64", "l": "bars, cafés et tabacs"},
+    {"n": "42", "l": "adresses de restauration rapide"}
+   ],
+   "texte": "Devant les services et la santé (169) et la mode et la beauté (152). **C'est le secteur le plus représenté de la rosace.**",
+   "source": "Source : OpenStreetMap via la BNCO · classement Pays d'Omer en 7 secteurs"
+  },
+  {
+   "type": "kpi",
+   "fond": "papier",
+   "surtitre": "Le panier du quotidien",
+   "chiffre": "42",
+   "unite": "boulangeries",
+   "reperes": [
+    {"n": "40", "l": "salons de coiffure"},
+    {"n": "35", "l": "pharmacies"}
+   ],
+   "texte": "Avec 18 boucheries et 42 supermarchés et supérettes, **l'alimentation compte 125 commerces** dans l'agglo.",
+   "source": "Source : OpenStreetMap via la BNCO"
+  },
+  {
+   "type": "teal",
+   "surtitre": "Ta commune en un clic",
+   "chiffre": "38",
+   "unite": "communes",
+   "accroche": "Choisis ta commune : la rosace se recompose avec ses seuls commerces, et chaque point ouvre sa fiche.",
+   "reperes": [
+    {"n": "151", "l": "enseignes affichées avec leur logo"},
+    {"n": "1 lien", "l": "par commune, à partager avec tes voisins"}
+   ],
+   "source": "À explorer sur paysdomer.fr/commerces",
+   "taille": 250
+  },
+  {
+   "type": "sources",
+   "titre": "Il manque\nton commerce ?",
+   "sources": [
+    {"n": "01", "t": "Les données viennent d'OpenStreetMap, la carte collaborative : 843 commerces nommés, dans 38 des 53 communes du Pays de Saint-Omer."},
+    {"n": "02", "t": "Les communes rurales sont encore peu cartographiées. Un commerce absent s'ajoute en quelques minutes sur openstreetmap.org, ou signale-le en commentaire."},
+    {"n": "03", "t": "OpenStreetMap (licence ODbL) via la Base nationale des commerces ouverte · logos des enseignes : Wikidata et Wikimedia Commons."}
+   ],
+   "prochainLabel": "À explorer",
+   "prochain": "La rosace complète sur paysdomer.fr/commerces"
+  }
+ ]
+}
